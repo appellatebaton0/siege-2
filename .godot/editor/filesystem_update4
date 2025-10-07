@@ -13,3 +13,10 @@ res://scenes/actors/player.tscn
 res://scenes/actors/target.tscn
 res://assets/resources/theme.tres
 res://scripts/components/elements/em_animator.gd
+res://scripts/components/elements/em_volume.gd
+res://scripts/components/elements/em_sfx.gd
+res://scenes/elements/level_button.tscn
+res://scripts/components/elements/em_label.gd
+res://scripts/components/cp_delete.gd
+res://scripts/components/cp_add.gd
+res://scenes/levels/level_1.tscn

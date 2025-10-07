@@ -26,6 +26,7 @@ func _init():
 var to_be_parented:Array[Node]
 
 func _ready() -> void:
+	# Fix DAMN IMPORT ISSUES
 	directory_path = directory_path.replace(".remap", "")
 	directory_path = directory_path.replace(".import", "")
 	
@@ -72,8 +73,8 @@ func _process(_delta: float) -> void:
 	while len(to_be_parented) > 0:
 		var node = to_be_parented[0 if load_from_back else len(to_be_parented)-1]
 		
+		print("added " , node)
 		if node.get_parent() == null:
 			parent.add_child(node)
-		else:
 			to_be_parented.erase(node)
 		

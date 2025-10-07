@@ -1,10 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://chm3si0nicqxd"]
+[gd_scene load_steps=22 format=3 uid="uid://chm3si0nicqxd"]
 
 [ext_resource type="PackedScene" uid="uid://c726740w53vs" path="res://scenes/levels/level_1.tscn" id="1_o5qli"]
 [ext_resource type="Theme" uid="uid://dtad3en8c1ip6" path="res://assets/resources/theme.tres" id="1_tipki"]
 [ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="6_85g3d"]
 [ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="6_o6xl0"]
 [ext_resource type="Script" uid="uid://kcbr0rkf2ua7" path="res://scripts/components/elements/em_autocolumn.gd" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bscyugcsicsg5" path="res://scenes/elements/level_button.tscn" id="6_tipki"]
+[ext_resource type="Script" uid="uid://cwf1a324oi18n" path="res://scripts/components/cp_modifyargument.gd" id="6_ya4ey"]
+[ext_resource type="Script" uid="uid://bgf1fdkr0aotd" path="res://scripts/components/elements/em_directoryload.gd" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://bxjg885lu0c7y" path="res://scripts/components/elements/em_label.gd" id="8_ya4ey"]
+[ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="9_eb6dy"]
+[ext_resource type="Script" uid="uid://cv207a4o6oygf" path="res://scripts/sfx_manager.gd" id="9_ya4ey"]
+[ext_resource type="Script" uid="uid://c44gv10tlpf4p" path="res://scripts/components/elements/em_volume.gd" id="10_ya4ey"]
 
 [sub_resource type="Gradient" id="Gradient_sugp2"]
 
@@ -221,11 +228,88 @@ tracks/4/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_eb6dy"]
+resource_name = "to_level"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightCurtain2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(576, 0), Vector2(1152, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftCurtain2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-576, 0), Vector2(0, 0), Vector2(-576, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InputLock:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -648)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StartScreen:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -648)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelSelect:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -648)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85g3d"]
 _data = {
 &"RESET": SubResource("Animation_tipki"),
 &"start_to_levels": SubResource("Animation_o6xl0"),
-&"start_to_options": SubResource("Animation_tbgi4")
+&"start_to_options": SubResource("Animation_tbgi4"),
+&"to_level": SubResource("Animation_eb6dy")
 }
 
 [node name="Main" type="Node" groups=["Main"]]
@@ -396,39 +480,26 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 
-[node name="Placeholder" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Placeholder2" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Placeholder3" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Placeholder4" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Placeholder5" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Placeholder6" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="AutoColumnElement" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
 script = ExtResource("6_tefeu")
 metadata/_custom_type_script = "uid://kcbr0rkf2ua7"
+
+[node name="DirectoryLoadComponent" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer" node_paths=PackedStringArray("pass_file_modifiers", "pass_index_modifiers")]
+script = ExtResource("7_o6xl0")
+pass_file_modifiers = [NodePath("PassScene")]
+pass_index_modifiers = [NodePath("PassIndex")]
+loading_scene = ExtResource("6_tipki")
+directory_path = "res://scenes/levels"
+metadata/_custom_type_script = "uid://bgf1fdkr0aotd"
+
+[node name="PassScene" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer/DirectoryLoadComponent"]
+script = ExtResource("6_ya4ey")
+metadata/_custom_type_script = "uid://cwf1a324oi18n"
+
+[node name="PassIndex" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer/DirectoryLoadComponent"]
+script = ExtResource("6_ya4ey")
+index = 1
+metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="Options" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -479,9 +550,112 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 11
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+[node name="Music Control" type="HBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Master Volume: 0"
+vertical_alignment = 1
+script = ExtResource("8_ya4ey")
+text_format = "Master Volume: {0}"
+
+[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control/Label" node_paths=PackedStringArray("input")]
+script = ExtResource("9_eb6dy")
+input = NodePath("DynamicSingleNodeValue")
+property = "value"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control/Label/DynamicPropertyValue" node_paths=PackedStringArray("node")]
+script = ExtResource("6_85g3d")
+node = NodePath("../../../HSlider")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control"]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+max_value = 30.0
+step = 0.1
+value = 5.0
+
+[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control/HSlider"]
+script = ExtResource("10_ya4ey")
+bus_name = "Master"
+
+[node name="Music Control2" type="HBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Music Volume: 0"
+vertical_alignment = 1
+script = ExtResource("8_ya4ey")
+text_format = "Music Volume: {0}"
+
+[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2/Label" node_paths=PackedStringArray("input")]
+script = ExtResource("9_eb6dy")
+input = NodePath("DynamicSingleNodeValue")
+property = "value"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2/Label/DynamicPropertyValue" node_paths=PackedStringArray("node")]
+script = ExtResource("6_85g3d")
+node = NodePath("../../../HSlider")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2"]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+max_value = 30.0
+step = 0.1
+value = 5.0
+
+[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2/HSlider"]
+script = ExtResource("10_ya4ey")
+bus_name = "Music"
+
+[node name="SFX Control" type="HBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sound Effect Volume: 0"
+vertical_alignment = 1
+script = ExtResource("8_ya4ey")
+text_format = "Sound Effect Volume: {0}"
+
+[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control/Label" node_paths=PackedStringArray("input")]
+script = ExtResource("9_eb6dy")
+input = NodePath("DynamicSingleNodeValue")
+property = "value"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control/Label/DynamicPropertyValue" node_paths=PackedStringArray("node")]
+script = ExtResource("6_85g3d")
+node = NodePath("../../../HSlider")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control"]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+max_value = 30.0
+step = 0.1
+value = 5.0
+
+[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control/HSlider"]
+script = ExtResource("10_ya4ey")
+bus_name = "SFX"
 
 [node name="LeftCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 0
@@ -495,7 +669,7 @@ texture = SubResource("GradientTexture2D_tefeu")
 [node name="RightCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_left = 1152.0
-offset_right = 1728.0021
+offset_right = 1728.002
 offset_bottom = 648.0
 size_flags_horizontal = 3
 texture = SubResource("GradientTexture2D_tefeu")
@@ -513,6 +687,10 @@ grow_vertical = 2
 libraries = {
 &"": SubResource("AnimationLibrary_85g3d")
 }
+
+[node name="SFX_Manager" type="Node" parent="."]
+script = ExtResource("9_ya4ey")
+metadata/_custom_type_script = "uid://cv207a4o6oygf"
 
 [connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start/AnimatorElement" method="animate"]
 [connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options/AnimatorElement" method="animate"]

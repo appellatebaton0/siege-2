@@ -1,19 +1,28 @@
 extends Element
 class_name LabelElement
-## A label that can show DynamicValues
+## Provides dynamic text to Control nodes that can show DynamicValues
 
 func _init():
 	component_id = "LabelElement"
 
-
+@export var node_to_set:Control ## The control to give the value to
+@export var value_to_set := "text" ## The value to set as this dynamic one
 @export var values:Array[DynamicValue]
-
-var me:Label = get_me()
 
 ## Use {x} to substitue values, with x being the index in the values array.
 @export_multiline var text_format:String = "{0}"
 
 func _ready() -> void:
+	
+	if node_to_set == null:
+		## If this node IS a control, use it.
+		## This is how this element used to work (which is bad),
+		## so this is a failsafe.
+		if get_me() is Control:
+			node_to_set = get_me()
+		elif get_parent() is Control:
+			node_to_set = get_me()
+	
 	for child in get_children():
 		if child is DynamicValue:
 			values.append(child)
@@ -37,5 +46,5 @@ func _update_label():
 	for i in range(len(values)):
 		real_text = real_text.replace("{" + str(i) + "}", str(real_values[i]))
 	
-	me.text = real_text
+	node_to_set.set(value_to_set, real_text)
 	
