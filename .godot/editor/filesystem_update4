@@ -1,2 +1,15 @@
 res://scenes/actors/mouse.tscn
 res://scenes/main.tscn
+res://assets/resources/tileset.tres
+res://assets/resources/tileset_texture.tres
+res://assets/resources/player_texture.tres
+res://scripts/components/cp_particle.gd
+res://scripts/components/cp_spawner.gd
+res://scripts/components/damage/cp_damage.gd
+res://scripts/components/elements/em_directoryload.gd
+res://scripts/components/cp_look.gd
+res://scripts/components/motion_subcomponents/motion_states/ms_pullanchor.gd
+res://scenes/actors/player.tscn
+res://scenes/actors/target.tscn
+res://assets/resources/theme.tres
+res://scripts/components/elements/em_animator.gd

@@ -1,0 +1,11 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://c58ovue33sa13"]
+
+[sub_resource type="Gradient" id="Gradient_he5ai"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cck5s"]
+gradient = SubResource("Gradient_he5ai")
+width = 32
+height = 32
+
+[resource]
+diffuse_texture = SubResource("GradientTexture2D_cck5s")

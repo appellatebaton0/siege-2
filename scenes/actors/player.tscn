@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://kq0ounbc4jwp"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_h5w3c"]
+[ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="2_0878f"]
+[ext_resource type="Texture2D" uid="uid://c58ovue33sa13" path="res://assets/resources/player_texture.tres" id="3_7860b"]
+[ext_resource type="Script" uid="uid://emk4mohj4ubh" path="res://scripts/components/motion_subcomponents/motion_states/cms_platformer.gd" id="3_dferu"]
+[ext_resource type="Script" uid="uid://comgodelutnps" path="res://scripts/components/cp_look.gd" id="6_xx81n"]
+[ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="7_0w4p8"]
+[ext_resource type="PackedScene" uid="uid://208ojfrjlttc" path="res://scenes/components/cp_animatedsprite.tscn" id="7_ypltb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("3_7860b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trceg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb6dy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_eb6dy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_trceg"]
+gradient = SubResource("Gradient_eb6dy")
+width = 24
+height = 5
+
+[node name="Player" type="Node2D" groups=["Player"]]
+script = ExtResource("1_h5w3c")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="Art" parent="." instance=ExtResource("7_ypltb")]
+sprite_frames = SubResource("SpriteFrames_trceg")
+
+[node name="Motion" parent="." instance=ExtResource("2_0878f")]
+
+[node name="Platformer" type="Node" parent="Motion"]
+script = ExtResource("3_dferu")
+jump_velocity = 325.0
+floor_acceleration = 900.0
+air_acceleration = 900.0
+floor_friction = 900.0
+air_friction = 900.0
+max_speed = 130.0
+metadata/_custom_type_script = "uid://emk4mohj4ubh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Motion"]
+shape = SubResource("RectangleShape2D_tefeu")
+
+[node name="Wand" type="Node2D" parent="."]
+script = ExtResource("6_xx81n")
+
+[node name="GetMouse" type="Node" parent="Wand"]
+script = ExtResource("7_0w4p8")
+group_name = "Mouse"
+metadata/_custom_type_script = "uid://dxshna2yqd87i"
+
+[node name="Sprite2D" type="Sprite2D" parent="Wand"]
+texture = SubResource("GradientTexture2D_trceg")

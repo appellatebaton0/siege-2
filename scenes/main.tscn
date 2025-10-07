@@ -1,3 +1,518 @@
-[gd_scene format=3 uid="uid://chm3si0nicqxd"]
+[gd_scene load_steps=14 format=3 uid="uid://chm3si0nicqxd"]
+
+[ext_resource type="PackedScene" uid="uid://c726740w53vs" path="res://scenes/levels/level_1.tscn" id="1_o5qli"]
+[ext_resource type="Theme" uid="uid://dtad3en8c1ip6" path="res://assets/resources/theme.tres" id="1_tipki"]
+[ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="6_85g3d"]
+[ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://kcbr0rkf2ua7" path="res://scripts/components/elements/em_autocolumn.gd" id="6_tefeu"]
+
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jyhfs"]
+gradient = SubResource("Gradient_sugp2")
+
+[sub_resource type="Gradient" id="Gradient_tbgi4"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tefeu"]
+gradient = SubResource("Gradient_tbgi4")
+width = 576
+height = 648
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "start_to_levels"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InputLock:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightCurtain2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(576, 0), Vector2(1152, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftCurtain2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-576, 0), Vector2(0, 0), Vector2(-576, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tipki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InputLock:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightCurtain2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftCurtain2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-576, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Options:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "start_to_options"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftCurtain2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-576, 0), Vector2(0, 0), Vector2(-576, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightCurtain2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(576, 0), Vector2(1152, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputLock:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_85g3d"]
+_data = {
+&"RESET": SubResource("Animation_tipki"),
+&"start_to_levels": SubResource("Animation_o6xl0"),
+&"start_to_options": SubResource("Animation_tbgi4")
+}
 
 [node name="Main" type="Node" groups=["Main"]]
+
+[node name="Level1" parent="." instance=ExtResource("1_o5qli")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tipki")
+
+[node name="StartScreen" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jyhfs")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/StartScreen/MarginContainer"]
+layout_mode = 2
+
+[node name="MenuStack" type="VBoxContainer" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+alignment = 2
+
+[node name="TopBuffer" type="Control" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameName" type="Label" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 56
+text = "[SIEGE WEEK 2]"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Start" type="Button" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 46
+text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start"]
+script = ExtResource("6_o6xl0")
+animation_name = "start_to_levels"
+metadata/_custom_type_script = "uid://b3tnj82s4tfu"
+
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start/AnimatorElement" node_paths=PackedStringArray("node")]
+script = ExtResource("6_85g3d")
+node = NodePath("../../../../../../../AnimationPlayer")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="Options" type="Button" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 46
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options"]
+script = ExtResource("6_o6xl0")
+animation_name = "start_to_options"
+metadata/_custom_type_script = "uid://b3tnj82s4tfu"
+
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options/AnimatorElement" node_paths=PackedStringArray("node")]
+script = ExtResource("6_85g3d")
+node = NodePath("../../../../../../../AnimationPlayer")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="BottomBuffer" type="Control" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RightBuffer" type="Control" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelSelect" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jyhfs")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/LevelSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MenuStack" type="VBoxContainer" parent="CanvasLayer/UI/LevelSelect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+alignment = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 56
+text = "Levels"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+
+[node name="Placeholder" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Placeholder2" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Placeholder3" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Placeholder4" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Placeholder5" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Placeholder6" type="Button" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AutoColumnElement" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
+script = ExtResource("6_tefeu")
+metadata/_custom_type_script = "uid://kcbr0rkf2ua7"
+
+[node name="Options" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jyhfs")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MenuStack" type="VBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+alignment = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 56
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LeftCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = -576.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_tefeu")
+
+[node name="RightCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 1728.0021
+offset_bottom = 648.0
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_tefeu")
+
+[node name="InputLock" type="Control" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI" groups=["Animator"]]
+libraries = {
+&"": SubResource("AnimationLibrary_85g3d")
+}
+
+[connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start/AnimatorElement" method="animate"]
+[connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options/AnimatorElement" method="animate"]

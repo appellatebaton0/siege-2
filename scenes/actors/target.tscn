@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://xao3jj18bsrg"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_blv2p"]
+[ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="2_v5wld"]
+[ext_resource type="Script" uid="uid://c6g0g1cd1i1k1" path="res://scripts/components/motion_subcomponents/motion_states/ms_pullanchor.gd" id="3_3md8w"]
+[ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="4_blv2p"]
+[ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="5_veusg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
+size = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_trceg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8y0u"]
+gradient = SubResource("Gradient_trceg")
+width = 10
+height = 10
+
+[node name="Target" type="Node2D" groups=["Target"]]
+script = ExtResource("1_blv2p")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="CP_Motion" parent="." instance=ExtResource("2_v5wld")]
+
+[node name="MS_Anchor" type="Node" parent="CP_Motion"]
+script = ExtResource("3_3md8w")
+magnetism_range = Vector2(125, 125)
+
+[node name="Anchor" type="Node" parent="CP_Motion/MS_Anchor"]
+script = ExtResource("4_blv2p")
+group_name = "Player"
+metadata/_custom_type_script = "uid://dxshna2yqd87i"
+
+[node name="Pull" type="Node" parent="CP_Motion/MS_Anchor"]
+script = ExtResource("4_blv2p")
+group_name = "Mouse"
+metadata/_custom_type_script = "uid://dxshna2yqd87i"
+
+[node name="CP_Area" parent="." instance=ExtResource("5_veusg")]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
+shape = SubResource("RectangleShape2D_a8y0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_a8y0u")
