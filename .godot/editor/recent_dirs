@@ -1,3 +1,6 @@
+res://assets/textures
+res://scenes/actors
+res://shaders
 res://scripts/components/rigid_components
 res://scripts/components/area_components
 res://scripts/components
@@ -8,5 +11,4 @@ res://scenes/levels
 res://scenes
 res://scripts/components/elements
 res://assets/resources
-res://scenes/actors
 res://assets/resources/

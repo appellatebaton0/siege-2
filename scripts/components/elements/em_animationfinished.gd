@@ -18,11 +18,14 @@ func _ready() -> void:
 		for child in get_children():
 			if child is DynamicNodeValue:
 				animator = child
+	if animator == null and get_parent() is AnimationPlayer:
+		real_animator = get_parent()
 	
-	var value = animator.value()
-	if value is AnimationPlayer:
-		real_animator = value
-		real_animator.animation_finished.connect(_on_finished)
+	if animator != null:
+		var value = animator.value()
+		if value is AnimationPlayer:
+			real_animator = value
+			real_animator.animation_finished.connect(_on_finished)
 
 func _on_finished(anim_name:String):
 	if anim_name == animation:

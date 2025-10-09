@@ -18,8 +18,8 @@
 [ext_resource type="Script" uid="uid://dxsyhe8y4y56p" path="res://scripts/dynamic_values/dv_spawnargument.gd" id="12_t62v4"]
 [ext_resource type="Script" uid="uid://cwf1a324oi18n" path="res://scripts/components/cp_modifyargument.gd" id="14_uqfkb"]
 [ext_resource type="Script" uid="uid://bc760wnktbcy7" path="res://scripts/dynamic_values/int/di_cast.gd" id="15_afsss"]
-[ext_resource type="Script" uid="uid://bxjg885lu0c7y" path="res://scripts/components/elements/em_label.gd" id="15_dferu"]
 [ext_resource type="Script" uid="uid://wx8iqc6tttrj" path="res://scripts/dynamic_values/int/di_modify.gd" id="16_642so"]
+[ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="21_6a6mx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
 atlas = ExtResource("3_7860b")
@@ -113,7 +113,7 @@ metadata/_custom_type_script = "uid://bc760wnktbcy7"
 
 [node name="GetPermsLeft" type="Node" parent="Motion/Platformer/CanPermeate/HasRemaining/Int-ify" node_paths=PackedStringArray("from")]
 script = ExtResource("12_t62v4")
-from = NodePath("../../../../../../Label/LabelElement/GetAmount/Self")
+from = NodePath("../../../../../../PassPermeateLimit/ToSelf")
 target_value = "PermeateAmount"
 metadata/_custom_type_script = "uid://dxsyhe8y4y56p"
 
@@ -131,7 +131,7 @@ check_mask = 1
 script = ExtResource("14_uqfkb")
 target_value = "PermeateAmount"
 new_value = NodePath("RemoveOne")
-target = NodePath("../../../Label/LabelElement/GetAmount/Self")
+target = NodePath("")
 metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="RemoveOne" type="Node" parent="Motion/Permeate/DecrementRemainining"]
@@ -145,7 +145,7 @@ metadata/_custom_type_script = "uid://bc760wnktbcy7"
 
 [node name="GetAmount" type="Node" parent="Motion/Permeate/DecrementRemainining/RemoveOne/MakeInt" node_paths=PackedStringArray("from")]
 script = ExtResource("12_t62v4")
-from = NodePath("../../../../../../Label/LabelElement/GetAmount/Self")
+from = NodePath("../../../../../../PassPermeateLimit/ToSelf")
 target_value = "PermeateAmount"
 metadata/_custom_type_script = "uid://dxsyhe8y4y56p"
 
@@ -192,23 +192,28 @@ script = ExtResource("12_3hvrq")
 node = NodePath("../..")
 metadata/_custom_type_script = "uid://vflwvin64hae"
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="PassScene" type="Node" parent="." node_paths=PackedStringArray("new_value", "target")]
+script = ExtResource("14_uqfkb")
+target_value = "LevelScene"
+new_value = NodePath("")
+target = NodePath("../PassPermeateLimit/ToSelf")
+metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
-[node name="LabelElement" type="Node" parent="Label"]
-script = ExtResource("15_dferu")
-metadata/_custom_type_script = "uid://bxjg885lu0c7y"
+[node name="Reset" type="Node" parent="."]
+script = ExtResource("21_6a6mx")
+animation_name = "close_curtain"
+metadata/_custom_type_script = "uid://b3tnj82s4tfu"
 
-[node name="GetAmount" type="Node" parent="Label/LabelElement"]
-script = ExtResource("12_t62v4")
-target_value = "PermeateAmount"
-metadata/_custom_type_script = "uid://dxsyhe8y4y56p"
+[node name="GetAnimator" type="Node" parent="Reset"]
+script = ExtResource("7_0w4p8")
+group_name = "Animator"
+metadata/_custom_type_script = "uid://dxshna2yqd87i"
 
-[node name="Self" type="Node" parent="Label/LabelElement/GetAmount" node_paths=PackedStringArray("node")]
-script = ExtResource("12_3hvrq")
-node = NodePath("../../../..")
-metadata/_custom_type_script = "uid://vflwvin64hae"
+[node name="ResetInput" type="Node" parent="Reset"]
+script = ExtResource("6_wl55n")
+input_name = "Reset"
+metadata/_custom_type_script = "uid://dx62hdsswpsqh"
 
 [connection signal="ready" from="." to="PassPermeateLimit" method="modify"]
+[connection signal="ready" from="." to="PassScene" method="modify"]
 [connection signal="became_active" from="Motion/Permeate" to="Motion/Permeate/DecrementRemainining" method="modify"]

@@ -11,8 +11,6 @@ func _ready() -> void:
 				input = child
 
 func value() -> int:
-	if name == "MakeInt":
-		print(input.value())
 	if input != null:
 		var response = input.value()
 		# If it can be cast, cast and return

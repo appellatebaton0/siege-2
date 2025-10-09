@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://x7rgwprpramy"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_4swpg"]
+[ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="2_dnd2m"]
+[ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="3_qttb3"]
+[ext_resource type="Script" uid="uid://c3lp8v776obwx" path="res://scripts/dynamic_values/condition/dc_cast.gd" id="4_6blqg"]
+[ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="5_7501b"]
+[ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="6_ekgrv"]
+[ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="7_2wbnv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31oqk"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_x7jkp"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0qwwm"]
+gradient = SubResource("Gradient_x7jkp")
+
+[node name="Goal" type="Node2D"]
+script = ExtResource("1_4swpg")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="CP_Area" parent="." instance=ExtResource("2_dnd2m")]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
+shape = SubResource("RectangleShape2D_31oqk")
+
+[node name="AnimatorElement" type="Node" parent="."]
+script = ExtResource("3_qttb3")
+animation_name = "won_level"
+metadata/_custom_type_script = "uid://b3tnj82s4tfu"
+
+[node name="ShouldWin" type="Node" parent="AnimatorElement"]
+script = ExtResource("4_6blqg")
+metadata/_custom_type_script = "uid://c3lp8v776obwx"
+
+[node name="HasCollisions" type="Node" parent="AnimatorElement/ShouldWin"]
+script = ExtResource("5_7501b")
+property = "has_overlapping_collisions()"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="Area" type="Node" parent="AnimatorElement/ShouldWin/HasCollisions" node_paths=PackedStringArray("node")]
+script = ExtResource("6_ekgrv")
+node = NodePath("../../../../CP_Area")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="GetAnimator" type="Node" parent="AnimatorElement"]
+script = ExtResource("7_2wbnv")
+group_name = "Animator"
+metadata/_custom_type_script = "uid://dxshna2yqd87i"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_0qwwm")

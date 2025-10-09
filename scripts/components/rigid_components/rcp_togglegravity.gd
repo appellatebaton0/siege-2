@@ -18,10 +18,8 @@ func _init():
 var grav_switch:bool = true
 
 func toggle_off():
-	print("tog off")
 	set_to(false)
 func toggle_on():
-	print("tog on")
 	set_to(true)
 func toggle():
 	set_to(not grav_switch)
@@ -49,7 +47,7 @@ func _process(_delta: float) -> void:
 			toggle()
 	if toggle_off_condition.value() and grav_switch:
 		toggle_off()
-	elif toggle_on_condition.value() and not grav_switch:
+	elif toggle_on_condition != null and toggle_on_condition.value() and not grav_switch:
 		toggle_on()
 	
 	

@@ -13,8 +13,6 @@ func _ready() -> void:
 				break
 
 func value() -> bool:
-	if name == "Float":
-		print(input.value())
 	
 	var response = input.value()
 	

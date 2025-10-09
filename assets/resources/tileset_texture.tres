@@ -1,10 +1,6 @@
-[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://bkt0wt8vdj8bq"]
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://bkt0wt8vdj8bq"]
 
-[sub_resource type="Gradient" id="Gradient_3axub"]
-offsets = PackedFloat32Array(0.5, 0.5)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xfwkj"]
-gradient = SubResource("Gradient_3axub")
+[ext_resource type="Texture2D" uid="uid://8kg8hgcv63fo" path="res://assets/textures/tileset.png" id="1_xfwkj"]
 
 [resource]
-diffuse_texture = SubResource("GradientTexture2D_xfwkj")
+diffuse_texture = ExtResource("1_xfwkj")

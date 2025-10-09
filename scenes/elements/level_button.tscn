@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bscyugcsicsg5"]
+[gd_scene load_steps=15 format=3 uid="uid://bscyugcsicsg5"]
 
 [ext_resource type="Script" uid="uid://clxnv4jp2t4w1" path="res://scripts/interface.gd" id="1_3kiwu"]
 [ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="1_smrge"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="7_5hm10"]
 [ext_resource type="Script" uid="uid://c0rn4mlevdrf2" path="res://scripts/dynamic_values/nodes/dN_group.gd" id="7_hgc3l"]
 [ext_resource type="Script" uid="uid://bxjg885lu0c7y" path="res://scripts/components/elements/em_label.gd" id="9_add8y"]
+[ext_resource type="Script" uid="uid://cwf1a324oi18n" path="res://scripts/components/cp_modifyargument.gd" id="9_mkwgp"]
 [ext_resource type="Script" uid="uid://bc760wnktbcy7" path="res://scripts/dynamic_values/int/di_cast.gd" id="10_32qp8"]
 [ext_resource type="Script" uid="uid://b2mer0tok1pwp" path="res://scripts/dynamic_values/float/df_modify.gd" id="11_mkwgp"]
 [ext_resource type="Script" uid="uid://dydglnka2ndct" path="res://scripts/dynamic_values/float/df_cast.gd" id="12_es5sy"]
@@ -73,6 +74,12 @@ metadata/_custom_type_script = "uid://vflwvin64hae"
 script = ExtResource("2_de5ym")
 group_name = "Main"
 metadata/_custom_type_script = "uid://dxshna2yqd87i"
+
+[node name="PassSceneToLevel" type="Node" parent="MarginContainer/Button/AddThisLevel" node_paths=PackedStringArray("new_value")]
+script = ExtResource("9_mkwgp")
+target_value = "Scene"
+new_value = NodePath("../GetScene/FromSpawnArg")
+metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="Label" type="Node" parent="MarginContainer/Button" node_paths=PackedStringArray("node_to_set")]
 script = ExtResource("9_add8y")

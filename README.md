@@ -28,3 +28,15 @@ Instead of doing framework progress reports like last time, we're doing devlogs!
 - These are both things that would need videos to show well, so have a flowchart of the third mechanic instead, plus ofc the updated ToDo list.
 - <img src="assets/screenshots/Flowchart.jpg" width="90%">
 - <img src="assets/screenshots/TODO2.png" width="400">
+### Thursday -> Final Mechanics & MVP
+- I finally finished the last mechanic (the bug was really simple, of course).
+    - Leviate -> Lets you make objects float, of which you can only have a certain amount floating per level.
+- Additionally, I've got the grayscale shader I wanted to make done, and set up the basic bits of it!
+- <img src="assets/screenshots/grayscale.png" width="400">
+- In other news, I finished up the following, making the game fully playable (still no levels D:)
+    - You can complete a level by reaching the goal (which doesn't have art or in-game meaning yet...)
+    - You can reset levels with R
+- --
+- Since then, I've started working on the art, since I want this to be *polished*.
+- <img src="assets/screenshots/ART0.png" width="400">
+- I also zoomed in the camera quite a bit, since it was kind of far out before. It might still change a bit.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xao3jj18bsrg"]
+[gd_scene load_steps=23 format=3 uid="uid://xao3jj18bsrg"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_blv2p"]
 [ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="2_v5wld"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c3i5i2bjirqir" path="res://scripts/dynamic_values/dv_manual.gd" id="6_v5wld"]
 [ext_resource type="Script" uid="uid://c2exnyx50galt" path="res://scripts/dynamic_values/condition/dc_and.gd" id="7_sp0vj"]
 [ext_resource type="Script" uid="uid://bfmame08wl4mo" path="res://scripts/components/cp_stash.gd" id="7_veusg"]
+[ext_resource type="Texture2D" uid="uid://dqfwl274m2vq4" path="res://assets/textures/target.png" id="8_4kden"]
 [ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="8_ixbi1"]
 [ext_resource type="Script" uid="uid://brl4uoc4gedbs" path="res://scripts/dynamic_values/node/dn_cast.gd" id="8_s4r36"]
 [ext_resource type="Script" uid="uid://bibj6mktsnd8n" path="res://scripts/dynamic_values/condition/dc_not.gd" id="9_ch2y2"]
@@ -19,12 +20,41 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
 size = Vector2(1, 1)
 
-[sub_resource type="Gradient" id="Gradient_trceg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kden"]
+atlas = ExtResource("8_4kden")
+region = Rect2(0, 0, 15, 15)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8y0u"]
-gradient = SubResource("Gradient_trceg")
-width = 10
-height = 10
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh7l4"]
+atlas = ExtResource("8_4kden")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6es7d"]
+atlas = ExtResource("8_4kden")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f5j6"]
+atlas = ExtResource("8_4kden")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qb04c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kden")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh7l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6es7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f5j6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Target" type="Node2D" groups=["Target"]]
 script = ExtResource("1_blv2p")
@@ -69,8 +99,11 @@ script = ExtResource("8_s4r36")
 input = NodePath("../../../Apparate/Stash")
 metadata/_custom_type_script = "uid://brl4uoc4gedbs"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_a8y0u")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qb04c")
+autoplay = "default"
+frame_progress = 0.7304102
 
 [node name="Apparate" type="Node" parent="." node_paths=PackedStringArray("stash_value", "push_node_value", "push_condition", "pull_location", "pull_condition")]
 script = ExtResource("7_veusg")

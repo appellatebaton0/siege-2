@@ -21,5 +21,6 @@ func value() -> Variant:
 		from_node = from.value()
 		if from_node != null:
 			if from_node is Actor or from_node is Interface:
-				return from_node.spawn_arguments[target_value]
+				if from_node.spawn_arguments.has(target_value):
+					return from_node.spawn_arguments[target_value]
 	return null
