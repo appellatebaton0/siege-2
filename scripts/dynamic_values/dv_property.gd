@@ -52,9 +52,10 @@ func value() -> Variant:
 	var response:Variant = null
 	
 	# Iterate down the values to get the final value.
+	var first = true
 	for sub_value in sub_values:
-		if response == null:
-			
+		if first:
+			first = false
 			response = get_property_of(real_input.value(), sub_value)
 		else:
 			response = get_property_of(response, sub_value)

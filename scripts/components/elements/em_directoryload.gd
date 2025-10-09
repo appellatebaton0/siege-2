@@ -56,9 +56,9 @@ func _ready() -> void:
 					
 				for mod in modifiers:
 					if pass_file_modifiers.has(mod):
-						mod.modify(new, -1, load(directory_path + "/" + file_name))
+						mod.modify(new, "", load(directory_path + "/" + file_name))
 					elif pass_index_modifiers.has(mod):
-						mod.modify(new, -1, file_index)
+						mod.modify(new, "", file_index)
 					else:
 						mod.modify(new)
 				
@@ -73,8 +73,8 @@ func _process(_delta: float) -> void:
 	while len(to_be_parented) > 0:
 		var node = to_be_parented[0 if load_from_back else len(to_be_parented)-1]
 		
-		print("added " , node)
 		if node.get_parent() == null:
 			parent.add_child(node)
 			to_be_parented.erase(node)
+		
 		

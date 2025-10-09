@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://chm3si0nicqxd"]
+[gd_scene load_steps=23 format=3 uid="uid://chm3si0nicqxd"]
 
 [ext_resource type="PackedScene" uid="uid://c726740w53vs" path="res://scenes/levels/level_1.tscn" id="1_o5qli"]
 [ext_resource type="Theme" uid="uid://dtad3en8c1ip6" path="res://assets/resources/theme.tres" id="1_tipki"]
@@ -24,70 +24,6 @@ gradient = SubResource("Gradient_sugp2")
 gradient = SubResource("Gradient_tbgi4")
 width = 576
 height = 648
-
-[sub_resource type="Animation" id="Animation_o6xl0"]
-resource_name = "start_to_levels"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StartScreen:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(0, 0), Vector2(0, -648)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LevelSelect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(0, -648), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("InputLock:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RightCurtain2:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.75, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1152, 0), Vector2(576, 0), Vector2(1152, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("LeftCurtain2:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.75, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-576, 0), Vector2(0, 0), Vector2(-576, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_tipki"]
 length = 0.001
@@ -162,6 +98,134 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -648)]
+}
+
+[sub_resource type="Animation" id="Animation_trceg"]
+resource_name = "options_to_start"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightCurtain2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(576, 0), Vector2(1152, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftCurtain2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-576, 0), Vector2(0, 0), Vector2(-576, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Options:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StartScreen:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputLock:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "start_to_levels"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelSelect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InputLock:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightCurtain2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(576, 0), Vector2(1152, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftCurtain2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-576, 0), Vector2(0, 0), Vector2(-576, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_tbgi4"]
@@ -307,6 +371,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85g3d"]
 _data = {
 &"RESET": SubResource("Animation_tipki"),
+&"options_to_start": SubResource("Animation_trceg"),
 &"start_to_levels": SubResource("Animation_o6xl0"),
 &"start_to_options": SubResource("Animation_tbgi4"),
 &"to_level": SubResource("Animation_eb6dy")
@@ -334,6 +399,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_jyhfs")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/StartScreen"]
@@ -374,19 +440,8 @@ size_flags_vertical = 2
 [node name="Start" type="Button" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
 theme_override_font_sizes/font_size = 46
 text = "START"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start"]
 script = ExtResource("6_o6xl0")
@@ -401,19 +456,8 @@ metadata/_custom_type_script = "uid://vflwvin64hae"
 [node name="Options" type="Button" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
 theme_override_font_sizes/font_size = 46
 text = "OPTIONS"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options"]
 script = ExtResource("6_o6xl0")
@@ -442,6 +486,7 @@ offset_top = -648.0
 offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_jyhfs")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/LevelSelect"]
@@ -494,11 +539,12 @@ metadata/_custom_type_script = "uid://bgf1fdkr0aotd"
 
 [node name="PassScene" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer/DirectoryLoadComponent"]
 script = ExtResource("6_ya4ey")
+target_value = "Scene"
 metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="PassIndex" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer/DirectoryLoadComponent"]
 script = ExtResource("6_ya4ey")
-index = 1
+target_value = "Index"
 metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="Options" type="TextureRect" parent="CanvasLayer/UI"]
@@ -510,6 +556,7 @@ offset_top = -648.0
 offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_jyhfs")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/Options"]
@@ -530,13 +577,45 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 14
 alignment = 2
 
-[node name="Title" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack"]
+[node name="HBoxContainer" type="Control" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -38.5
+offset_right = 107.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 56
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Back" type="Button" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer"]
+layout_mode = 0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 46
+text = " Back "
+
+[node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back"]
+script = ExtResource("6_o6xl0")
+animation_name = "options_to_start"
+metadata/_custom_type_script = "uid://b3tnj82s4tfu"
+
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back/AnimatorElement" node_paths=PackedStringArray("node")]
+script = ExtResource("6_85g3d")
+node = NodePath("../../../../../../../AnimationPlayer")
+metadata/_custom_type_script = "uid://vflwvin64hae"
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack"]
 layout_mode = 2
@@ -664,14 +743,16 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_tefeu")
 
 [node name="RightCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_left = 1152.0
-offset_right = 1728.002
+offset_right = 1728.0022
 offset_bottom = 648.0
 size_flags_horizontal = 3
+focus_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_tefeu")
 
 [node name="InputLock" type="Control" parent="CanvasLayer/UI"]
@@ -694,3 +775,4 @@ metadata/_custom_type_script = "uid://cv207a4o6oygf"
 
 [connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start/AnimatorElement" method="animate"]
 [connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options/AnimatorElement" method="animate"]
+[connection signal="pressed" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back" to="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back/AnimatorElement" method="animate"]

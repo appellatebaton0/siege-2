@@ -1,25 +1,25 @@
 class_name DynamicSpawnArgumentValue extends DynamicValue
 
-@export var from:Interface
-@export var index := 0
-
-func find_interface(depth:int = 5, with:Node = self) -> Interface:
-	
-	if depth <= 0:
-		return null
-	
-	var answer:Interface = null
-	
-	if with is Interface:
-		answer = with
-	else:
-		answer = find_interface(depth - 1, with.get_parent())
-	
-	return answer
+## The node to grab the value from.
+@export var from:DynamicNodeValue
+var from_node:Node
+## The value to grab from the spawn arguments.
+@export var target_value := ""
 
 func _ready() -> void:
+	
 	if from == null:
-		from = find_interface()
+		for child in get_children():
+			if child is DynamicNodeValue:
+				from = child
+	
+	if from == null:
+		print(name, " is sad :(")
 
 func value() -> Variant:
-	return from.spawn_arguments[index]
+	if from != null:
+		from_node = from.value()
+		if from_node != null:
+			if from_node is Actor or from_node is Interface:
+				return from_node.spawn_arguments[target_value]
+	return null

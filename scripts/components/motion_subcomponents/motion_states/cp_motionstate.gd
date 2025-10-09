@@ -1,6 +1,10 @@
 @abstract class_name MotionState extends MotionSubComponent
 ## A specific MotionSubComponent which can only have one active per motioncomponent at a time.
 
+# Signals for when this state activates/deactivates.
+@warning_ignore("unused_signal") signal became_active
+@warning_ignore("unused_signal") signal became_inactive
+
 ## Switch to a different state if a DynamicValue is true, and the motionstate is the current one.
 @export var switch_handles:Dictionary[DynamicValue, MotionState]
 

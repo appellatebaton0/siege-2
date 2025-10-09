@@ -7,8 +7,8 @@ signal freeing
 ## This really shouldn't be stored here...
 @export var static_texture:Texture
 
-## A variant array to provide surface-level arguments to an actor.
-@export var spawn_arguments:Array[Variant] = [null, null, null, null, null]
+## A Dictionary to provide surface-level arguments to an actor.
+@export var spawn_arguments:Dictionary[String, Variant]
 
 var active_lockers:Array[Node]
 func add_active_lock(node:Node) -> bool:
@@ -22,6 +22,9 @@ func remove_active_lock(node:Node) -> bool:
 		return true
 	return false
 func is_active() -> bool:
+	# false if not in the tree D:
+	if get_parent() == null:
+		return false
 	return len(active_lockers) == 0
 
 func late_free():
@@ -67,3 +70,7 @@ func _init() -> void:
 		for child in get_children():
 			if child is Sprite2D:
 				static_texture = child.texture
+#
+#func _process(delta: float) -> void:
+	#if self.name == "Player":
+		#print(spawn_arguments)

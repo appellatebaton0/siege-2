@@ -1,10 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://xao3jj18bsrg"]
+[gd_scene load_steps=19 format=3 uid="uid://xao3jj18bsrg"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_blv2p"]
 [ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="2_v5wld"]
 [ext_resource type="Script" uid="uid://c6g0g1cd1i1k1" path="res://scripts/components/motion_subcomponents/motion_states/ms_pullanchor.gd" id="3_3md8w"]
 [ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="4_blv2p"]
 [ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="5_veusg"]
+[ext_resource type="Script" uid="uid://cnq67bsyougwu" path="res://scripts/components/area_components/acp_collisionmatch.gd" id="6_ch2y2"]
+[ext_resource type="Script" uid="uid://c3i5i2bjirqir" path="res://scripts/dynamic_values/dv_manual.gd" id="6_v5wld"]
+[ext_resource type="Script" uid="uid://c2exnyx50galt" path="res://scripts/dynamic_values/condition/dc_and.gd" id="7_sp0vj"]
+[ext_resource type="Script" uid="uid://bfmame08wl4mo" path="res://scripts/components/cp_stash.gd" id="7_veusg"]
+[ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="8_ixbi1"]
+[ext_resource type="Script" uid="uid://brl4uoc4gedbs" path="res://scripts/dynamic_values/node/dn_cast.gd" id="8_s4r36"]
+[ext_resource type="Script" uid="uid://bibj6mktsnd8n" path="res://scripts/dynamic_values/condition/dc_not.gd" id="9_ch2y2"]
+[ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="9_ixbi1"]
+[ext_resource type="Script" uid="uid://dx62hdsswpsqh" path="res://scripts/dynamic_values/dv_input.gd" id="9_s4r36"]
+[ext_resource type="Script" uid="uid://c3lp8v776obwx" path="res://scripts/dynamic_values/condition/dc_cast.gd" id="10_4kden"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
 size = Vector2(1, 1)
@@ -24,7 +34,7 @@ metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
 [node name="MS_Anchor" type="Node" parent="CP_Motion"]
 script = ExtResource("3_3md8w")
-magnetism_range = Vector2(125, 125)
+magnetism_range = Vector2(0, 125)
 
 [node name="Anchor" type="Node" parent="CP_Motion/MS_Anchor"]
 script = ExtResource("4_blv2p")
@@ -36,12 +46,111 @@ script = ExtResource("4_blv2p")
 group_name = "Mouse"
 metadata/_custom_type_script = "uid://dxshna2yqd87i"
 
-[node name="CP_Area" parent="." instance=ExtResource("5_veusg")]
+[node name="FindObjects" parent="." instance=ExtResource("5_veusg")]
 collision_layer = 32
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FindObjects"]
 shape = SubResource("RectangleShape2D_a8y0u")
+
+[node name="StopPlaceInWall" parent="." instance=ExtResource("5_veusg")]
+collision_layer = 32
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopPlaceInWall"]
+shape = SubResource("RectangleShape2D_a8y0u")
+
+[node name="MatchCollision" type="Node" parent="StopPlaceInWall" node_paths=PackedStringArray("from")]
+script = ExtResource("6_ch2y2")
+from = NodePath("DynamicCastNodeValue")
+
+[node name="DynamicCastNodeValue" type="Node" parent="StopPlaceInWall/MatchCollision" node_paths=PackedStringArray("input")]
+script = ExtResource("8_s4r36")
+input = NodePath("../../../Apparate/Stash")
+metadata/_custom_type_script = "uid://brl4uoc4gedbs"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_a8y0u")
+
+[node name="Apparate" type="Node" parent="." node_paths=PackedStringArray("stash_value", "push_node_value", "push_condition", "pull_location", "pull_condition")]
+script = ExtResource("7_veusg")
+stash_value = NodePath("Stash")
+push_node_value = NodePath("CollidingObject")
+push_condition = NodePath("PushCondition")
+pull_location = NodePath("GetLevel")
+pull_condition = NodePath("PullCondition")
+
+[node name="PushCondition" type="Node" parent="Apparate" node_paths=PackedStringArray("inputs")]
+script = ExtResource("7_sp0vj")
+inputs = [NodePath("../ApparateInput"), NodePath("../NotHoldingObject")]
+metadata/_custom_type_script = "uid://c2exnyx50galt"
+
+[node name="PullCondition" type="Node" parent="Apparate" node_paths=PackedStringArray("inputs")]
+script = ExtResource("7_sp0vj")
+inputs = [NodePath("../ApparateInput"), NodePath("../NotHoldingObject/BoolHoldingObject"), NodePath("../NotInAWall")]
+metadata/_custom_type_script = "uid://c2exnyx50galt"
+
+[node name="ApparateInput" type="Node" parent="Apparate"]
+script = ExtResource("9_s4r36")
+input_name = "Apparate"
+metadata/_custom_type_script = "uid://dx62hdsswpsqh"
+
+[node name="NotHoldingObject" type="Node" parent="Apparate"]
+script = ExtResource("9_ch2y2")
+metadata/_custom_type_script = "uid://bibj6mktsnd8n"
+
+[node name="BoolHoldingObject" type="Node" parent="Apparate/NotHoldingObject"]
+script = ExtResource("10_4kden")
+metadata/_custom_type_script = "uid://c3lp8v776obwx"
+
+[node name="HoldingObject" type="Node" parent="Apparate/NotHoldingObject/BoolHoldingObject"]
+script = ExtResource("8_ixbi1")
+property = "filled()"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="Stash" type="Node" parent="Apparate/NotHoldingObject/BoolHoldingObject/HoldingObject" node_paths=PackedStringArray("node")]
+script = ExtResource("9_ixbi1")
+node = NodePath("../../../../Stash")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="CollidingObject" type="Node" parent="Apparate"]
+script = ExtResource("8_s4r36")
+metadata/_custom_type_script = "uid://brl4uoc4gedbs"
+
+[node name="GetFirstObject" type="Node" parent="Apparate/CollidingObject"]
+script = ExtResource("8_ixbi1")
+property = "get_first_object().actor"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="FromArea" type="Node" parent="Apparate/CollidingObject/GetFirstObject" node_paths=PackedStringArray("node")]
+script = ExtResource("9_ixbi1")
+node = NodePath("../../../../FindObjects")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="Stash" type="Node" parent="Apparate"]
+script = ExtResource("6_v5wld")
+
+[node name="GetLevel" type="Node" parent="Apparate"]
+script = ExtResource("4_blv2p")
+group_name = "Level"
+metadata/_custom_type_script = "uid://dxshna2yqd87i"
+
+[node name="NotInAWall" type="Node" parent="Apparate"]
+script = ExtResource("9_ch2y2")
+metadata/_custom_type_script = "uid://bibj6mktsnd8n"
+
+[node name="IsInWall" type="Node" parent="Apparate/NotInAWall"]
+script = ExtResource("10_4kden")
+metadata/_custom_type_script = "uid://c3lp8v776obwx"
+
+[node name="IsColliding" type="Node" parent="Apparate/NotInAWall/IsInWall"]
+script = ExtResource("8_ixbi1")
+property = "has_overlapping_collisions()"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="WallArea" type="Node" parent="Apparate/NotInAWall/IsInWall/IsColliding" node_paths=PackedStringArray("node")]
+script = ExtResource("9_ixbi1")
+node = NodePath("../../../../../StopPlaceInWall")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[connection signal="changed" from="Apparate/Stash" to="StopPlaceInWall/MatchCollision" method="update"]

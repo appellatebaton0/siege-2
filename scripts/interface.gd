@@ -6,8 +6,8 @@ class_name Interface
 
 # See also: Actor for Node2Ds
 
-## A variant array to provide surface-level arguments to an interface.
-@export var spawn_arguments:Array[Variant] = [null, null, null, null, null]
+## A Dictionary to provide surface-level arguments to an interface.
+@export var spawn_arguments:Dictionary[String, Variant]
 
 @onready var elements:Array[Element] = get_elements()
 func get_elements(depth:int = 4, with:Node = self) -> Array[Element]:

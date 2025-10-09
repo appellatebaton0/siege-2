@@ -1,4 +1,4 @@
-class_name DynamicIntCastValue extends DynamicIntValue
+class_name DynamicCastIntValue extends DynamicIntValue
 ## Casts a DV to an int
 
 ## The value to cast
@@ -11,6 +11,8 @@ func _ready() -> void:
 				input = child
 
 func value() -> int:
+	if name == "MakeInt":
+		print(input.value())
 	if input != null:
 		var response = input.value()
 		# If it can be cast, cast and return

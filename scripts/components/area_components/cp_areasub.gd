@@ -1,7 +1,7 @@
 @abstract
 class_name AreaSubComponent extends Component
 
-@export_flags_2d_physics var collision_mask
+@export_flags_2d_physics var collision_mask = 0
 @onready var area_component:AreaComponent = get_parent()
 
 # Upkept by the AreaComponent, note objects overlapping with this one. 

@@ -4,8 +4,8 @@ class_name ModArgumentComponent extends Component
 func _init():
 	component_id = "ModProperty"
 
-## The index to modify
-@export var index := 0
+## The value to modify
+@export var target_value := ""
 ## The value to set it to
 @export var new_value:DynamicValue
 ## The node to modify
@@ -18,9 +18,9 @@ func _ready() -> void:
 		elif child is DynamicValue and new_value == null:
 			new_value = child
 
-func modify(override_target:Node = null, override_index := -1, override_value:Variant = null):
-	var use_target:Node 
-	var use_index:int = index
+func modify(override_target:Node = null, override_target_value := "", override_value:Variant = null):
+	var use_target:Node
+	var use_target_value:String = target_value
 	var use_value:Variant
 	
 	# Do the overrides if needed.
@@ -32,11 +32,11 @@ func modify(override_target:Node = null, override_index := -1, override_value:Va
 	if override_target != null:
 		use_target = override_target
 	elif target != null:
-		use_target = target
+		use_target = target.value()
 	
-	if override_index != -1:
-		use_index = override_index
+	if override_target_value != "":
+		use_target_value = override_target_value
 	
 	# If everything's valid, modify the spawn arguments.
 	if use_value != null and (use_target is Interface or use_target is Actor):
-		use_target.spawn_arguments[use_index] = use_value
+		use_target.spawn_arguments[use_target_value] = use_value

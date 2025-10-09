@@ -9,6 +9,9 @@ func _init() -> void:
 # Allows the motioncomponent to be overridden by any node
 var overrider:Node = null
 
+# The direction the actor is assumed to be facing, false for left, true for right.
+var direction:bool 
+
 # All the motion states
 @onready var motion_states:Array[MotionState] = get_motion_states()
 func get_motion_states() -> Array[MotionState]:
@@ -38,10 +41,12 @@ var current_state:MotionState
 # Change the current state
 func change_state(to:MotionState):
 	current_state.on_inactive()
+	current_state.became_inactive.emit()
 	
 	current_state = to
 	
 	current_state.on_active()
+	current_state.became_active.emit()
 
 func _ready() -> void:
 	if initial_state != null:

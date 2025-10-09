@@ -17,5 +17,14 @@ Instead of doing framework progress reports like last time, we're doing devlogs!
 - Small square -> Target, Small line -> Mouse
 - Additionally, I got the entire UI pretty much up and working (wow this framework is nice), we've got a start menu, volume control, and a level select screen! It definitely will need some tweaks (like art ofc) later, but it's functional at least.
 - <img src="assets/screenshots/UI1.png" width="150"><img src="assets/screenshots/UI2.png" width="150"><img src="assets/screenshots/UI3.png" width="150">
-- That was all for Tuesday, and it's a pretty good start if I do say so myself. Mostly the easy stuff. Here's how the list is looking now; <img src="assets/screenshots/TODO1.png" width="400">
-
+- That was all for Tuesday, and it's a pretty good start if I do say so myself. Mostly the easy stuff. Here's how the list is looking now; 
+- <img src="assets/screenshots/TODO1.png" width="400">
+### Wednesday -> Main Mechanic Grind
+- My goal for today was to get the main puzzle mechanics, of which there are 3, all working.
+- I ended up getting two done, and getting stuck on the third...
+- Anyways, we've got working Permeate and Apparate, two of the three puzzle mechanics
+    - Permeate's effectively a collisionless dash, that you have a certain amount of per level
+    - Apparate lets you use your wand to make things disappear, and then reappear in a new place (I'm very proud of the code to stop you from putting things in walls)
+- These are both things that would need videos to show well, so have a flowchart of the third mechanic instead, plus ofc the updated ToDo list.
+- <img src="assets/screenshots/Flowchart.jpg" width="90%">
+- <img src="assets/screenshots/TODO2.png" width="400">

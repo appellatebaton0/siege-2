@@ -9,7 +9,48 @@ func _init() -> void:
 
 signal collided
 
+# Returns the first object this area is colliding with. Optional mask.
+func get_first_object(mask:int = -1) -> Node2D:
+	var array = (me.get_overlapping_bodies() + me.get_overlapping_bodies())
+	
+	# Ignore objects that have the same actor
+	for object in array:
+		var o = object
+		if o is Component:
+			if o.actor == actor:
+				array.erase(object)
+		
+		if mask != -1 and not layer_match(mask, object):
+			array.erase(object)
+	
+	if len(array) <= 0:
+		return null
+	return array[0]
+# Returns if this area has collisions that match the given mask.
+func has_overlapping_collisions_for(mask:int) -> bool:
+	# Get all the current collisions
+	var objects := me.get_overlapping_bodies() + me.get_overlapping_bodies()
+
+	# If there's already none, save the trouble
+	if len(objects) <= 0:
+		return false
+	
+	
+	for object in objects:
+		# Ignore objects that have the same actor
+		var o = object
+		if o is Component:
+			if o.actor == actor:
+				continue
+		
+		# Check through each of the rest for ones that match the mask
+		if layer_match(mask, object):
+			return true ## If there is one, return true.
+	
+	return false
+# Returns if this Area has ANY collisions. Body or Area.
 func has_overlapping_collisions() -> bool:
+	
 	var bodies = me.get_overlapping_bodies()
 	var areas = me.get_overlapping_areas()
 
@@ -77,9 +118,10 @@ func get_array_as_layer(array:Array[bool]) -> int:
 			value += int(pow(2.0, i))
 	return value
 
-func layer_match(sub_component:AreaSubComponent, object:Node2D):
-	
-	var sub_comp_mask := get_layer_as_array(sub_component.collision_mask)
+# var sub_comp_mask := get_layer_as_array(sub_component.collision_mask)
+# Returns if a subcomponent's mask matches the layer of an object.
+func layer_match(mask:int, object:Node2D):
+	var mask_array = get_layer_as_array(mask)
 	var obj_comp_layer:Array[bool]
 	if object is CollisionObject2D:
 		obj_comp_layer = get_layer_as_array(object.collision_layer)
@@ -90,12 +132,12 @@ func layer_match(sub_component:AreaSubComponent, object:Node2D):
 		return false
 	
 	
-	for i in range(len(sub_comp_mask)):
-		if sub_comp_mask[i] and obj_comp_layer[i]:
+	for i in range(len(mask_array)):
+		if mask_array[i] and obj_comp_layer[i]:
 			return true
 	return false
 
-
+# When an area collides with this one.
 func _on_area_entered(area:Area2D):
 	var a = area
 	if a is AreaComponent:
@@ -104,15 +146,15 @@ func _on_area_entered(area:Area2D):
 	# Run the area function for every valid subcomponent
 	for component in sub_components:
 		# Only do so if the component has a layer matching the area's
-		if layer_match(component, area):
+		if layer_match(component.collision_mask, area):
 			component.on_area_entered(area)
 	collided.emit()
-	
+# When a body collides with this one.
 func _on_body_entered(body:Node2D):
 	# Run the body function for every valid subcomponent
 	for component in sub_components:
 		# Only do so if the component has a layer matching the body's
-		if layer_match(component, body):
+		if layer_match(component.collision_mask, body):
 			component.on_body_entered(body)
 	collided.emit()
 
@@ -142,7 +184,7 @@ func _process(delta: float) -> void:
 				var valid_areas:Array[Area2D]
 				
 				for area in areas:
-					if layer_match(component, area):
+					if layer_match(component.collision_mask, area):
 						valid_areas.append(area)
 				
 				component.overlapping_areas = valid_areas
@@ -153,7 +195,7 @@ func _process(delta: float) -> void:
 			var valid_bodies:Array[Node2D]
 			
 			for body in bodies:
-				if layer_match(component, body):
+				if layer_match(component.collision_mask, body):
 					valid_bodies.append(body)
 			
 			component.overlapping_bodies = valid_bodies

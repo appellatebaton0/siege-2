@@ -73,6 +73,9 @@ func phys_active(delta:float):
 	var current_acceleration := floor_acceleration if character.is_on_floor() else air_acceleration
 	var current_friction := floor_friction if character.is_on_floor() else air_friction
 	if direction:
+		# Update the component direction.
+		component.direction = direction > 0
+		
 		# If the actor isn't already moving faster
 		if not abs(character.velocity.x) > max_speed:
 			character.velocity.x = move_toward(character.velocity.x, direction * max_speed, delta * current_acceleration)
@@ -82,3 +85,4 @@ func phys_active(delta:float):
 			character.velocity.x = move_toward(character.velocity.x, 0, delta * current_friction)
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, delta * current_friction)
+	

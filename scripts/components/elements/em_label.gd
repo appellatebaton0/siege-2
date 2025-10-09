@@ -21,7 +21,7 @@ func _ready() -> void:
 		if get_me() is Control:
 			node_to_set = get_me()
 		elif get_parent() is Control:
-			node_to_set = get_me()
+			node_to_set = get_parent()
 	
 	for child in get_children():
 		if child is DynamicValue:
