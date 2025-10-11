@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b5sr3quyxur4c"
-path="res://.godot/imported/placeholder.wav-a4d3f38b2f1755b08807fe10f0649f2c.sample"
+uid="uid://cg0jjkv2t6y6k"
+path="res://.godot/imported/land.wav-6f339f0cb8abb44d119c317df4f4b636.sample"
 
 [deps]
 
-source_file="res://assets/sfx/placeholder.wav"
-dest_files=["res://.godot/imported/placeholder.wav-a4d3f38b2f1755b08807fe10f0649f2c.sample"]
+source_file="res://assets/sfx/land.wav"
+dest_files=["res://.godot/imported/land.wav-6f339f0cb8abb44d119c317df4f4b636.sample"]
 
 [params]
 

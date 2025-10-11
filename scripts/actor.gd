@@ -70,7 +70,3 @@ func _init() -> void:
 		for child in get_children():
 			if child is Sprite2D:
 				static_texture = child.texture
-#
-#func _process(delta: float) -> void:
-	#if self.name == "Player":
-		#print(spawn_arguments)

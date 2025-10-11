@@ -9,3 +9,6 @@ func _init():
 
 func make():
 	Global.play_sfx.emit(sfx)
+
+func make_value(_val:Variant):
+	Global.play_sfx.emit(sfx)

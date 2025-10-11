@@ -1,9 +1,11 @@
 res://assets/textures
+res://scripts/dynamic_values/condition
+res://scripts/components
+res://scenes/actors/objects
 res://scenes/actors
 res://shaders
 res://scripts/components/rigid_components
 res://scripts/components/area_components
-res://scripts/components
 res://scripts/dynamic_values
 res://scripts/components/motion_subcomponents/motion_states
 res://scripts/

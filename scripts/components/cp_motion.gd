@@ -40,19 +40,22 @@ var current_state:MotionState
 
 # Change the current state
 func change_state(to:MotionState):
-	current_state.on_inactive()
-	current_state.became_inactive.emit()
+	if current_state != null:
+		current_state.on_inactive()
+		current_state.became_inactive.emit()
+		current_state.is_current_state = false
 	
 	current_state = to
 	
 	current_state.on_active()
 	current_state.became_active.emit()
+	current_state.is_current_state = true
 
 func _ready() -> void:
 	if initial_state != null:
-		current_state = initial_state
+		change_state(initial_state)
 	elif len(motion_states) > 0:
-		current_state = motion_states[0]
+		change_state(motion_states[0])
 
 func _process(delta: float) -> void:
 	# Run each state's applicable function for processing

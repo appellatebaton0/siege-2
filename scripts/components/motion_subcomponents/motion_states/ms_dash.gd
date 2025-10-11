@@ -14,7 +14,7 @@ func _init():
 @export var dash_time := 0.0 ## The amount of time to dash FOR, minimum.
 var time := 0.0 # The real, current dash time.
 @export var dash_carry_y_velocity := false ## Whether to keep the current Y velocity, and not override it.
-@export var dash_cooldown := 0.0 ## The delay before you can dash again; for DVs
+@export var dash_cooldown := 0.0 ## The delay before you can dash again
 var cooldown := 0.0 # The real, current dash cooldown
 
 @export_group("Collision Rules")

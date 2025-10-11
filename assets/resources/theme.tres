@@ -1,13 +1,70 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dtad3en8c1ip6"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://dtad3en8c1ip6"]
 
-[sub_resource type="Gradient" id="Gradient_wartt"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://ckccdpybau8ne" path="res://assets/fonts/PixeloidMono-d94EV.ttf" id="1_8j3o5"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8j3o5"]
-gradient = SubResource("Gradient_wartt")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytfe3"]
+bg_color = Color(0.26880795, 0.27351442, 0.43484813, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gswqq"]
-texture = SubResource("GradientTexture2D_8j3o5")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j3o5"]
+bg_color = Color(0.19607843, 0.2, 0.3254902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjlm5"]
+bg_color = Color(0.17057788, 0.17406985, 0.28744093, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mjybr"]
+color = Color(0.1254902, 0.18039216, 0.35686275, 1)
+thickness = 10
+
+[sub_resource type="Gradient" id="Gradient_8j3o5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.5628475, 0.67389923, 0.80736995, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gswqq"]
+gradient = SubResource("Gradient_8j3o5")
+width = 24
+height = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbr2m"]
+bg_color = Color(0.7249795, 0.80125225, 0.89165986, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ytfe3"]
+color = Color(0.2192865, 0.29913706, 0.55470043, 1)
+thickness = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gswqq"]
+bg_color = Color(0.16862746, 0.17254902, 0.27450982, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56ekn"]
+bg_color = Color(0.09176227, 0.136588, 0.28094214, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.078431375, 0.10980392, 0.21960784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjybr"]
+bg_color = Color(0.25490198, 0.33333334, 0.58431375, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.1254902, 0.18039216, 0.35686275, 1)
 
 [resource]
-Button/styles/normal = SubResource("StyleBoxTexture_gswqq")
+Button/fonts/font = ExtResource("1_8j3o5")
+Button/styles/hover = SubResource("StyleBoxFlat_ytfe3")
+Button/styles/normal = SubResource("StyleBoxFlat_8j3o5")
+Button/styles/pressed = SubResource("StyleBoxFlat_tjlm5")
+HSeparator/styles/separator = SubResource("StyleBoxLine_mjybr")
+HSlider/icons/grabber = SubResource("GradientTexture2D_gswqq")
+HSlider/icons/grabber_disabled = SubResource("GradientTexture2D_gswqq")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_gswqq")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_rbr2m")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_rbr2m")
+HSlider/styles/slider = SubResource("StyleBoxLine_ytfe3")
+Label/colors/font_color = Color(0.12721625, 0.1807161, 0.35684037, 1)
+Label/font_sizes/font_size = 23
+Label/fonts/font = ExtResource("1_8j3o5")
+Panel/styles/panel = SubResource("StyleBoxFlat_gswqq")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_56ekn")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_mjybr")

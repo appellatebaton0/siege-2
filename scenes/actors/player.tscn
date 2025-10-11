@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://kq0ounbc4jwp"]
+[gd_scene load_steps=50 format=3 uid="uid://kq0ounbc4jwp"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_h5w3c"]
 [ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="2_0878f"]
 [ext_resource type="Texture2D" uid="uid://c58ovue33sa13" path="res://assets/resources/player_texture.tres" id="3_7860b"]
 [ext_resource type="Script" uid="uid://emk4mohj4ubh" path="res://scripts/components/motion_subcomponents/motion_states/cms_platformer.gd" id="3_dferu"]
+[ext_resource type="Script" uid="uid://c3lp8v776obwx" path="res://scripts/dynamic_values/condition/dc_cast.gd" id="4_6a6mx"]
 [ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="4_dferu"]
 [ext_resource type="Script" uid="uid://c3hcg35riv2af" path="res://scripts/components/motion_subcomponents/motion_states/ms_dash.gd" id="6_0w4p8"]
 [ext_resource type="Script" uid="uid://c2exnyx50galt" path="res://scripts/dynamic_values/condition/dc_and.gd" id="6_nmlhc"]
@@ -19,32 +20,185 @@
 [ext_resource type="Script" uid="uid://cwf1a324oi18n" path="res://scripts/components/cp_modifyargument.gd" id="14_uqfkb"]
 [ext_resource type="Script" uid="uid://bc760wnktbcy7" path="res://scripts/dynamic_values/int/di_cast.gd" id="15_afsss"]
 [ext_resource type="Script" uid="uid://wx8iqc6tttrj" path="res://scripts/dynamic_values/int/di_modify.gd" id="16_642so"]
+[ext_resource type="Texture2D" uid="uid://bwr6ihyg6u6nm" path="res://assets/textures/Sprite-0014.png" id="20_3hvrq"]
+[ext_resource type="Texture2D" uid="uid://b6ikgjn1ygpcj" path="res://assets/textures/wand.png" id="20_afsss"]
 [ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="21_6a6mx"]
+[ext_resource type="Script" uid="uid://bibj6mktsnd8n" path="res://scripts/dynamic_values/condition/dc_not.gd" id="22_bwi5y"]
+[ext_resource type="Script" uid="uid://bsd2u0vt62p7p" path="res://scripts/dynamic_values/float/df_vector.gd" id="24_18oyn"]
+[ext_resource type="Script" uid="uid://dc01byv28y07a" path="res://scripts/dynamic_values/vec2/dv2_cast.gd" id="25_f6erl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(26, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7i36"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_366ld"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pjo5"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiqit"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uqew"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2xlt"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d16k"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmlg3"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm3fn"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amsee"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn1li"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
 atlas = ExtResource("3_7860b")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g275"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn53q"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvvss"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cobgw"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awnt6"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r251j"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spmms"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8eyy"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42ob5"]
+atlas = ExtResource("20_3hvrq")
+region = Rect2(192, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_trceg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7i36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_366ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pjo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiqit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uqew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2xlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d16k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmlg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm3fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amsee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn1li")
+}],
+"loop": true,
+"name": &"dashing",
+"speed": 11.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eb6dy")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g275")
+}],
+"loop": true,
+"name": &"midair",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn53q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvvss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cobgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awnt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r251j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spmms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8eyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42ob5")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 11.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
-size = Vector2(32, 32)
-
-[sub_resource type="Gradient" id="Gradient_eb6dy"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_trceg"]
-gradient = SubResource("Gradient_eb6dy")
-width = 24
-height = 5
 
 [node name="Player" type="Node2D" groups=["Player"]]
 z_index = 1
@@ -54,16 +208,13 @@ spawn_arguments = Dictionary[String, Variant]({
 })
 metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
-[node name="Art" parent="." instance=ExtResource("7_ypltb")]
-sprite_frames = SubResource("SpriteFrames_trceg")
-
 [node name="Motion" parent="." instance=ExtResource("2_0878f")]
 collision_layer = 2
-collision_mask = 25
+collision_mask = 89
 
 [node name="Platformer" type="Node" parent="Motion" node_paths=PackedStringArray("switch_handles")]
 script = ExtResource("3_dferu")
-jump_velocity = 360.0
+jump_velocity = 280.0
 floor_acceleration = 900.0
 air_acceleration = 900.0
 floor_friction = 900.0
@@ -113,25 +264,25 @@ metadata/_custom_type_script = "uid://bc760wnktbcy7"
 
 [node name="GetPermsLeft" type="Node" parent="Motion/Platformer/CanPermeate/HasRemaining/Int-ify" node_paths=PackedStringArray("from")]
 script = ExtResource("12_t62v4")
-from = NodePath("../../../../../../PassPermeateLimit/ToSelf")
+from = NodePath("../../../../../../FromLevel")
 target_value = "PermeateAmount"
 metadata/_custom_type_script = "uid://dxsyhe8y4y56p"
 
-[node name="Permeate" type="Node" parent="Motion" node_paths=PackedStringArray("deactivation_state", "check_area")]
+[node name="Permeate" type="Node" parent="Motion" node_paths=PackedStringArray("deactivation_state", "check_area") groups=["Permeate"]]
 script = ExtResource("6_0w4p8")
 deactivation_state = NodePath("../Platformer")
 dash_speed = 300.0
 dash_time = 0.5
 dash_cooldown = 3.0
 override_mask = true
-check_area = NodePath("../../Area")
+check_area = NodePath("../../PermCheck")
 check_mask = 1
 
 [node name="DecrementRemainining" type="Node" parent="Motion/Permeate" node_paths=PackedStringArray("new_value", "target")]
 script = ExtResource("14_uqfkb")
 target_value = "PermeateAmount"
 new_value = NodePath("RemoveOne")
-target = NodePath("")
+target = NodePath("../../../FromLevel")
 metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="RemoveOne" type="Node" parent="Motion/Permeate/DecrementRemainining"]
@@ -145,17 +296,19 @@ metadata/_custom_type_script = "uid://bc760wnktbcy7"
 
 [node name="GetAmount" type="Node" parent="Motion/Permeate/DecrementRemainining/RemoveOne/MakeInt" node_paths=PackedStringArray("from")]
 script = ExtResource("12_t62v4")
-from = NodePath("../../../../../../PassPermeateLimit/ToSelf")
+from = NodePath("../../../../../../FromLevel")
 target_value = "PermeateAmount"
 metadata/_custom_type_script = "uid://dxsyhe8y4y56p"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Motion"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_tefeu")
 
-[node name="Area" parent="." instance=ExtResource("4_dferu")]
+[node name="PermCheck" parent="." instance=ExtResource("4_dferu")]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PermCheck"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_tefeu")
 
 [node name="Wand" type="Node2D" parent="."]
@@ -163,41 +316,113 @@ script = ExtResource("6_xx81n")
 
 [node name="GetMouse" type="Node" parent="Wand"]
 script = ExtResource("7_0w4p8")
-group_name = "Mouse"
+group_name = "Target"
 metadata/_custom_type_script = "uid://dxshna2yqd87i"
 
 [node name="Sprite2D" type="Sprite2D" parent="Wand"]
-texture = SubResource("GradientTexture2D_trceg")
+texture_filter = 1
+position = Vector2(29, 0)
+texture = ExtResource("20_afsss")
 
-[node name="PassPermeateLimit" type="Node" parent="." node_paths=PackedStringArray("new_value", "target")]
-script = ExtResource("14_uqfkb")
-target_value = "PermeateAmount"
-new_value = NodePath("GetValue")
-target = NodePath("ToSelf")
-metadata/_custom_type_script = "uid://cwf1a324oi18n"
+[node name="Art" parent="." node_paths=PackedStringArray("condition_ties", "flip_h_condition") instance=ExtResource("7_ypltb")]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_trceg")
+animation = &"dashing"
+frame_progress = 0.415364
+condition_ties = {
+NodePath("IsDashing"): "dashing",
+NodePath("Midair"): "midair",
+NodePath("Moving"): "moving",
+NodePath("Moving/Idle"): "idle"
+}
+flip_h_condition = NodePath("FlipH")
 
-[node name="GetValue" type="Node" parent="PassPermeateLimit" node_paths=PackedStringArray("from")]
-script = ExtResource("12_t62v4")
-from = NodePath("FromLevel")
-target_value = "PermeateAmount"
-metadata/_custom_type_script = "uid://dxsyhe8y4y56p"
+[node name="FlipH" type="Node" parent="Art"]
+script = ExtResource("22_bwi5y")
+metadata/_custom_type_script = "uid://bibj6mktsnd8n"
 
-[node name="FromLevel" type="Node" parent="PassPermeateLimit/GetValue"]
+[node name="Cast" type="Node" parent="Art/FlipH"]
+script = ExtResource("4_6a6mx")
+metadata/_custom_type_script = "uid://c3lp8v776obwx"
+
+[node name="Direction" type="Node" parent="Art/FlipH/Cast" node_paths=PackedStringArray("input")]
+script = ExtResource("11_6xqls")
+input = NodePath("../../../CPMotion")
+property = "direction"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="CPMotion" type="Node" parent="Art" node_paths=PackedStringArray("node")]
+script = ExtResource("12_3hvrq")
+node = NodePath("../../Motion")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="Moving" type="Node" parent="Art"]
+script = ExtResource("22_bwi5y")
+metadata/_custom_type_script = "uid://bibj6mktsnd8n"
+
+[node name="Idle" type="Node" parent="Art/Moving" node_paths=PackedStringArray("input")]
+script = ExtResource("12_0878f")
+input = NodePath("../../XVelocity")
+metadata/_custom_type_script = "uid://dvxjlj3aequd3"
+
+[node name="XVelocity" type="Node" parent="Art" node_paths=PackedStringArray("input")]
+script = ExtResource("24_18oyn")
+input = NodePath("../Velocity")
+metadata/_custom_type_script = "uid://bsd2u0vt62p7p"
+
+[node name="Velocity" type="Node" parent="Art"]
+script = ExtResource("25_f6erl")
+metadata/_custom_type_script = "uid://dc01byv28y07a"
+
+[node name="GetVelocity" type="Node" parent="Art/Velocity" node_paths=PackedStringArray("input")]
+script = ExtResource("11_6xqls")
+input = NodePath("../../CPMotion")
+property = "velocity"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="IsDashing" type="Node" parent="Art"]
+script = ExtResource("4_6a6mx")
+metadata/_custom_type_script = "uid://c3lp8v776obwx"
+
+[node name="IsCurrentState" type="Node" parent="Art/IsDashing"]
+script = ExtResource("11_6xqls")
+property = "is_current_state"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="GetPermeateState" type="Node" parent="Art/IsDashing/IsCurrentState" node_paths=PackedStringArray("node")]
+script = ExtResource("12_3hvrq")
+node = NodePath("../../../../Motion/Permeate")
+metadata/_custom_type_script = "uid://vflwvin64hae"
+
+[node name="Midair" type="Node" parent="Art"]
+script = ExtResource("22_bwi5y")
+metadata/_custom_type_script = "uid://bibj6mktsnd8n"
+
+[node name="OnFloor" type="Node" parent="Art/Midair"]
+script = ExtResource("4_6a6mx")
+metadata/_custom_type_script = "uid://c3lp8v776obwx"
+
+[node name="IsOnFloor" type="Node" parent="Art/Midair/OnFloor" node_paths=PackedStringArray("input")]
+script = ExtResource("11_6xqls")
+input = NodePath("../../../CPMotion")
+property = "is_on_floor()"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="FromLevel" type="Node" parent="."]
 script = ExtResource("7_0w4p8")
 group_name = "Level"
 metadata/_custom_type_script = "uid://dxshna2yqd87i"
 
-[node name="ToSelf" type="Node" parent="PassPermeateLimit" node_paths=PackedStringArray("node")]
+[node name="PassScene" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("14_uqfkb")
+target_value = "LevelScene"
+target = NodePath("ToSelf")
+metadata/_custom_type_script = "uid://cwf1a324oi18n"
+
+[node name="ToSelf" type="Node" parent="PassScene" node_paths=PackedStringArray("node")]
 script = ExtResource("12_3hvrq")
 node = NodePath("../..")
 metadata/_custom_type_script = "uid://vflwvin64hae"
-
-[node name="PassScene" type="Node" parent="." node_paths=PackedStringArray("new_value", "target")]
-script = ExtResource("14_uqfkb")
-target_value = "LevelScene"
-new_value = NodePath("")
-target = NodePath("../PassPermeateLimit/ToSelf")
-metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="Reset" type="Node" parent="."]
 script = ExtResource("21_6a6mx")
@@ -214,6 +439,5 @@ script = ExtResource("6_wl55n")
 input_name = "Reset"
 metadata/_custom_type_script = "uid://dx62hdsswpsqh"
 
-[connection signal="ready" from="." to="PassPermeateLimit" method="modify"]
 [connection signal="ready" from="." to="PassScene" method="modify"]
 [connection signal="became_active" from="Motion/Permeate" to="Motion/Permeate/DecrementRemainining" method="modify"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bscyugcsicsg5"]
+[gd_scene load_steps=19 format=3 uid="uid://bscyugcsicsg5"]
 
 [ext_resource type="Script" uid="uid://clxnv4jp2t4w1" path="res://scripts/interface.gd" id="1_3kiwu"]
+[ext_resource type="Theme" uid="uid://dtad3en8c1ip6" path="res://assets/resources/theme.tres" id="1_es5sy"]
 [ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="1_smrge"]
 [ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="2_de5ym"]
 [ext_resource type="Script" uid="uid://bf81f7ddjf4ou" path="res://scripts/components/cp_delete.gd" id="3_de5ym"]
@@ -14,6 +15,9 @@
 [ext_resource type="Script" uid="uid://bc760wnktbcy7" path="res://scripts/dynamic_values/int/di_cast.gd" id="10_32qp8"]
 [ext_resource type="Script" uid="uid://b2mer0tok1pwp" path="res://scripts/dynamic_values/float/df_modify.gd" id="11_mkwgp"]
 [ext_resource type="Script" uid="uid://dydglnka2ndct" path="res://scripts/dynamic_values/float/df_cast.gd" id="12_es5sy"]
+[ext_resource type="Script" uid="uid://dct20wi0v1ct4" path="res://scripts/components/elements/em_sfx.gd" id="16_w6jgq"]
+[ext_resource type="AudioStream" uid="uid://cmktdcpnlkx4p" path="res://assets/sfx/button_up.wav" id="17_fpuuk"]
+[ext_resource type="AudioStream" uid="uid://d0q34u1qakdqd" path="res://assets/sfx/button_down.wav" id="18_5xtdm"]
 
 [node name="LevelButton" type="Panel"]
 anchors_preset = 15
@@ -23,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_es5sy")
 script = ExtResource("1_3kiwu")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -32,13 +37,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 61
 text = "Level 1"
 
 [node name="DeleteOtherLevels" type="Node" parent="MarginContainer/Button"]
@@ -49,6 +55,10 @@ metadata/_custom_type_script = "uid://bf81f7ddjf4ou"
 script = ExtResource("7_hgc3l")
 group_name = "Level"
 metadata/_custom_type_script = "uid://c0rn4mlevdrf2"
+
+[node name="Timer" type="Timer" parent="MarginContainer/Button"]
+wait_time = 0.05
+one_shot = true
 
 [node name="AddThisLevel" type="Node" parent="MarginContainer/Button" node_paths=PackedStringArray("scene", "target")]
 script = ExtResource("4_p0ssh")
@@ -116,6 +126,19 @@ script = ExtResource("2_de5ym")
 group_name = "Animator"
 metadata/_custom_type_script = "uid://dxshna2yqd87i"
 
+[node name="ButtonUp" type="Node" parent="MarginContainer"]
+script = ExtResource("16_w6jgq")
+sfx = ExtResource("17_fpuuk")
+metadata/_custom_type_script = "uid://dct20wi0v1ct4"
+
+[node name="ButtonDown" type="Node" parent="MarginContainer"]
+script = ExtResource("16_w6jgq")
+sfx = ExtResource("18_5xtdm")
+metadata/_custom_type_script = "uid://dct20wi0v1ct4"
+
+[connection signal="button_down" from="MarginContainer/Button" to="MarginContainer/ButtonDown" method="make"]
+[connection signal="button_up" from="MarginContainer/Button" to="MarginContainer/ButtonUp" method="make"]
 [connection signal="pressed" from="MarginContainer/Button" to="MarginContainer/Button/DeleteOtherLevels" method="delete"]
 [connection signal="pressed" from="MarginContainer/Button" to="MarginContainer/Button/Animate" method="animate"]
-[connection signal="finished" from="MarginContainer/Button/DeleteOtherLevels" to="MarginContainer/Button/AddThisLevel" method="add"]
+[connection signal="finished" from="MarginContainer/Button/DeleteOtherLevels" to="MarginContainer/Button/Timer" method="start"]
+[connection signal="timeout" from="MarginContainer/Button/Timer" to="MarginContainer/Button/AddThisLevel" method="add"]

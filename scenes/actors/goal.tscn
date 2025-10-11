@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://x7rgwprpramy"]
+[gd_scene load_steps=13 format=3 uid="uid://x7rgwprpramy"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_4swpg"]
 [ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="2_dnd2m"]
@@ -7,32 +7,28 @@
 [ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="5_7501b"]
 [ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="6_ekgrv"]
 [ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="7_2wbnv"]
+[ext_resource type="Texture2D" uid="uid://b5u7ylw470j63" path="res://assets/textures/hatbox.png" id="8_dnd2m"]
+[ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="9_qttb3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31oqk"]
-size = Vector2(64, 64)
+size = Vector2(44, 38)
 
-[sub_resource type="Gradient" id="Gradient_x7jkp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6blqg"]
+size = Vector2(2, 40)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0qwwm"]
-gradient = SubResource("Gradient_x7jkp")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qttb3"]
+size = Vector2(44, 9)
 
-[node name="Goal" type="Node2D"]
+[node name="Goal" type="Node2D" groups=["Goal"]]
 script = ExtResource("1_4swpg")
 metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
-
-[node name="CP_Area" parent="." instance=ExtResource("2_dnd2m")]
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
-shape = SubResource("RectangleShape2D_31oqk")
 
 [node name="AnimatorElement" type="Node" parent="."]
 script = ExtResource("3_qttb3")
 animation_name = "won_level"
 metadata/_custom_type_script = "uid://b3tnj82s4tfu"
 
-[node name="ShouldWin" type="Node" parent="AnimatorElement"]
+[node name="ShouldWin" type="Node" parent="AnimatorElement" groups=["WinCondition"]]
 script = ExtResource("4_6blqg")
 metadata/_custom_type_script = "uid://c3lp8v776obwx"
 
@@ -52,4 +48,30 @@ group_name = "Animator"
 metadata/_custom_type_script = "uid://dxshna2yqd87i"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_0qwwm")
+z_index = 5
+texture_filter = 1
+texture = ExtResource("8_dnd2m")
+
+[node name="CP_Area" parent="." instance=ExtResource("2_dnd2m")]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
+position = Vector2(-8, 11)
+shape = SubResource("RectangleShape2D_31oqk")
+
+[node name="CP_Motion" parent="." instance=ExtResource("9_qttb3")]
+collision_layer = 64
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Motion"]
+position = Vector2(-31, 12)
+shape = SubResource("RectangleShape2D_6blqg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CP_Motion"]
+position = Vector2(15, 12)
+shape = SubResource("RectangleShape2D_6blqg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CP_Motion/CollisionShape2D2"]
+position = Vector2(-23, 15.5)
+shape = SubResource("RectangleShape2D_qttb3")

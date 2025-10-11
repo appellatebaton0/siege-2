@@ -1,6 +1,9 @@
 @abstract class_name MotionState extends MotionSubComponent
 ## A specific MotionSubComponent which can only have one active per motioncomponent at a time.
 
+## Whether or not this is the current state, for DVs
+var is_current_state:bool = false
+
 # Signals for when this state activates/deactivates.
 @warning_ignore("unused_signal") signal became_active
 @warning_ignore("unused_signal") signal became_inactive

@@ -29,4 +29,5 @@ func _process(_delta: float) -> void:
 		for tie in condition_ties:
 			if tie.value() and me.sprite_frames.has_animation(condition_ties[tie]):
 				me.play(condition_ties[tie])
+				break
 				

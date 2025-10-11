@@ -39,4 +39,15 @@ Instead of doing framework progress reports like last time, we're doing devlogs!
 - --
 - Since then, I've started working on the art, since I want this to be *polished*.
 - <img src="assets/screenshots/ART0.png" width="400">
-- I also zoomed in the camera quite a bit, since it was kind of far out before. It might still change a bit.
+- I also zoomed in the camera quite a bit, since it was kind of far out before. It might still change a bit. Anyways, here's how the ToDo list's looking!
+- <img src="assets/screenshots/TODO3.png" width="400">
+### Friday -> Polish & Levels
+- I spent a LONG time working today, so I forgot to take more in-progress screenshots, but all of the art for the game is done!
+- <img src="assets/screenshots/UI4.png" width="45%"><img src="assets/screenshots/ingame.png" width="45%">
+- I also added music - I didn't have time to make any of my own so I used [Curious Critters by Matthew Pablo](https://opengameart.org/content/curious-critters), from OpenGameArt.com
+- In other news, there are now in-game HUDs;
+    - for seeing how many times you can Permeate left -> see the above picture, with a cooldown bar
+    - for seeing how many objects you can Leviate at once. 
+- My plan for tomorrow, which will likely be my final day working on this, is to get more levels, as there are 4 right now and I haven't even introduced all the mechanics yet.
+- Now here's how the ToDo list's looking! I cut out everything but what I've planned.
+- <img src="assets/screenshots/TODO4.png" width="400">

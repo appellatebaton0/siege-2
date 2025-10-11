@@ -1,11 +1,6 @@
-[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://c58ovue33sa13"]
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://c58ovue33sa13"]
 
-[sub_resource type="Gradient" id="Gradient_he5ai"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cck5s"]
-gradient = SubResource("Gradient_he5ai")
-width = 32
-height = 32
+[ext_resource type="Texture2D" uid="uid://bwr6ihyg6u6nm" path="res://assets/textures/Sprite-0014.png" id="1_cck5s"]
 
 [resource]
-diffuse_texture = SubResource("GradientTexture2D_cck5s")
+diffuse_texture = ExtResource("1_cck5s")

@@ -57,6 +57,7 @@ animations = [{
 }]
 
 [node name="Target" type="Node2D" groups=["Target"]]
+z_index = 6
 script = ExtResource("1_blv2p")
 metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
@@ -64,7 +65,7 @@ metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
 [node name="MS_Anchor" type="Node" parent="CP_Motion"]
 script = ExtResource("3_3md8w")
-magnetism_range = Vector2(0, 125)
+magnetism_range = Vector2(40, 125)
 
 [node name="Anchor" type="Node" parent="CP_Motion/MS_Anchor"]
 script = ExtResource("4_blv2p")

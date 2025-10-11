@@ -1,11 +1,14 @@
-[gd_scene load_steps=31 format=3 uid="uid://chm3si0nicqxd"]
+[gd_scene load_steps=44 format=3 uid="uid://chm3si0nicqxd"]
 
 [ext_resource type="Theme" uid="uid://dtad3en8c1ip6" path="res://assets/resources/theme.tres" id="1_tipki"]
+[ext_resource type="Texture2D" uid="uid://dlgem7aqvi2y1" path="res://assets/textures/start_screen.png" id="2_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://xirfpyakqw3v" path="res://assets/textures/button.png" id="3_0ld40"]
 [ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="6_85g3d"]
 [ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="6_o6xl0"]
 [ext_resource type="Script" uid="uid://kcbr0rkf2ua7" path="res://scripts/components/elements/em_autocolumn.gd" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bscyugcsicsg5" path="res://scenes/elements/level_button.tscn" id="6_tipki"]
 [ext_resource type="Script" uid="uid://cwf1a324oi18n" path="res://scripts/components/cp_modifyargument.gd" id="6_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://w7qsb003cduh" path="res://assets/textures/screen.png" id="6_yc10j"]
 [ext_resource type="Script" uid="uid://bgf1fdkr0aotd" path="res://scripts/components/elements/em_directoryload.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://bxjg885lu0c7y" path="res://scripts/components/elements/em_label.gd" id="8_ya4ey"]
 [ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="9_eb6dy"]
@@ -14,21 +17,46 @@
 [ext_resource type="Script" uid="uid://d0lyeohgijt48" path="res://scripts/components/elements/em_animationfinished.gd" id="11_muem4"]
 [ext_resource type="Script" uid="uid://bf81f7ddjf4ou" path="res://scripts/components/cp_delete.gd" id="12_dp3eg"]
 [ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="13_0ld40"]
+[ext_resource type="Texture2D" uid="uid://b74x7a27h2js3" path="res://assets/textures/curtain.png" id="13_gqmmt"]
 [ext_resource type="Script" uid="uid://wxua6trhimab" path="res://scripts/components/cp_add.gd" id="14_gqmmt"]
 [ext_resource type="Script" uid="uid://cbhbn73a4gk8w" path="res://scripts/dynamic_values/scenes/ds_cast.gd" id="15_yc10j"]
 [ext_resource type="Script" uid="uid://dxsyhe8y4y56p" path="res://scripts/dynamic_values/dv_spawnargument.gd" id="16_jscy8"]
+[ext_resource type="Script" uid="uid://dct20wi0v1ct4" path="res://scripts/components/elements/em_sfx.gd" id="21_og1vs"]
+[ext_resource type="AudioStream" uid="uid://cmktdcpnlkx4p" path="res://assets/sfx/button_up.wav" id="22_2wyq8"]
+[ext_resource type="AudioStream" uid="uid://o1x2cqyyg3jc" path="res://assets/music.ogg" id="22_jscy8"]
+[ext_resource type="AudioStream" uid="uid://d0q34u1qakdqd" path="res://assets/sfx/button_down.wav" id="23_vxglm"]
 
-[sub_resource type="Gradient" id="Gradient_sugp2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
+atlas = ExtResource("3_0ld40")
+region = Rect2(0, 0, 174, 26)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jyhfs"]
-gradient = SubResource("Gradient_sugp2")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yc10j"]
+load_path = "res://.godot/imported/button.png-8911a537b9d74946e57d12c653cdadda.ctex"
 
-[sub_resource type="Gradient" id="Gradient_tbgi4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+atlas = SubResource("CompressedTexture2D_yc10j")
+region = Rect2(0, 52, 174, 26)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tefeu"]
-gradient = SubResource("Gradient_tbgi4")
-width = 576
-height = 648
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pm3ni"]
+load_path = "res://.godot/imported/button.png-8911a537b9d74946e57d12c653cdadda.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6deb"]
+atlas = SubResource("CompressedTexture2D_pm3ni")
+region = Rect2(0, 26, 174, 26)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_og1vs"]
+load_path = "res://.godot/imported/button.png-8911a537b9d74946e57d12c653cdadda.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wyq8"]
+atlas = SubResource("CompressedTexture2D_og1vs")
+region = Rect2(0, 52, 174, 26)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vxglm"]
+load_path = "res://.godot/imported/button.png-8911a537b9d74946e57d12c653cdadda.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f3dj"]
+atlas = SubResource("CompressedTexture2D_vxglm")
+region = Rect2(0, 26, 174, 26)
 
 [sub_resource type="Animation" id="Animation_tipki"]
 length = 0.001
@@ -103,6 +131,61 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -648)]
+}
+
+[sub_resource type="Animation" id="Animation_pm3ni"]
+resource_name = "close_curtain"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightCurtain2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(576, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftCurtain2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-576, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y6deb"]
+resource_name = "open_curtain"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightCurtain2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 0), Vector2(1152, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftCurtain2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-576, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_trceg"]
@@ -375,7 +458,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_a8y0u"]
 resource_name = "won_level"
-length = 1.4
+length = 1.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -383,7 +466,7 @@ tracks/0/path = NodePath("RightCurtain2:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.4),
+"times": PackedFloat32Array(0.35833335, 1.0666666, 1.7666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1152, 0), Vector2(576, 0), Vector2(1152, 0)]
@@ -395,7 +478,7 @@ tracks/1/path = NodePath("LevelSelect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0.35833335, 1.0583334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2(0, -648), Vector2(0, 0)]
@@ -407,7 +490,7 @@ tracks/2/path = NodePath("LeftCurtain2:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.4),
+"times": PackedFloat32Array(0.35833335, 1.0583334, 1.7666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-576, 0), Vector2(0, 0), Vector2(-576, 0)]
@@ -419,65 +502,10 @@ tracks/3/path = NodePath("InputLock:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.4),
+"times": PackedFloat32Array(0.35833335, 1.7666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_pm3ni"]
-resource_name = "close_curtain"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RightCurtain2:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1152, 0), Vector2(576, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftCurtain2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-576, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_y6deb"]
-resource_name = "open_curtain"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RightCurtain2:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(576, 0), Vector2(1152, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftCurtain2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-576, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85g3d"]
@@ -495,6 +523,7 @@ _data = {
 [node name="Main" type="Node" groups=["Main"]]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -506,6 +535,7 @@ grow_vertical = 2
 theme = ExtResource("1_tipki")
 
 [node name="StartScreen" type="TextureRect" parent="CanvasLayer/UI"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -513,7 +543,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_behavior_recursive = 1
-texture = SubResource("GradientTexture2D_jyhfs")
+texture = ExtResource("2_dp3eg")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/StartScreen"]
 layout_mode = 1
@@ -544,17 +574,19 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 56
-text = "[SIEGE WEEK 2]"
+text = "Hatgical"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+[node name="Start" type="TextureButton" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+clip_contents = true
+custom_minimum_size = Vector2(524, 80)
 layout_mode = 2
-size_flags_vertical = 2
-
-[node name="Start" type="Button" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 46
-text = "START"
+size_flags_horizontal = 0
+texture_normal = SubResource("AtlasTexture_gqmmt")
+texture_pressed = SubResource("AtlasTexture_jscy8")
+texture_hover = SubResource("AtlasTexture_y6deb")
+stretch_mode = 4
 
 [node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start"]
 script = ExtResource("6_o6xl0")
@@ -566,11 +598,26 @@ script = ExtResource("6_85g3d")
 node = NodePath("../../../../../../../AnimationPlayer")
 metadata/_custom_type_script = "uid://vflwvin64hae"
 
-[node name="Options" type="Button" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+[node name="Label" type="Label" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9372549, 0.9490196, 0.9098039, 1)
+theme_override_font_sizes/font_size = 36
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureButton" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
+custom_minimum_size = Vector2(524, 80)
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 46
-text = "OPTIONS"
+texture_normal = SubResource("AtlasTexture_gqmmt")
+texture_pressed = SubResource("AtlasTexture_2wyq8")
+texture_hover = SubResource("AtlasTexture_2f3dj")
+stretch_mode = 4
 
 [node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options"]
 script = ExtResource("6_o6xl0")
@@ -582,6 +629,19 @@ script = ExtResource("6_85g3d")
 node = NodePath("../../../../../../../AnimationPlayer")
 metadata/_custom_type_script = "uid://vflwvin64hae"
 
+[node name="Label" type="Label" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9372549, 0.9490196, 0.9098039, 1)
+theme_override_font_sizes/font_size = 36
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BottomBuffer" type="Control" parent="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -591,6 +651,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="LevelSelect" type="TextureRect" parent="CanvasLayer/UI"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -600,7 +661,7 @@ offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_behavior_recursive = 1
-texture = SubResource("GradientTexture2D_jyhfs")
+texture = ExtResource("6_yc10j")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/LevelSelect"]
 layout_mode = 1
@@ -646,6 +707,7 @@ metadata/_custom_type_script = "uid://kcbr0rkf2ua7"
 script = ExtResource("7_o6xl0")
 pass_file_modifiers = [NodePath("PassScene")]
 pass_index_modifiers = [NodePath("PassIndex")]
+load_from_back = true
 loading_scene = ExtResource("6_tipki")
 directory_path = "res://scenes/levels"
 metadata/_custom_type_script = "uid://bgf1fdkr0aotd"
@@ -661,6 +723,7 @@ target_value = "Index"
 metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
 [node name="Options" type="TextureRect" parent="CanvasLayer/UI"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -670,7 +733,7 @@ offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_behavior_recursive = 1
-texture = SubResource("GradientTexture2D_jyhfs")
+texture = ExtResource("6_yc10j")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/Options"]
 layout_mode = 1
@@ -714,22 +777,6 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Back" type="Button" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer"]
-layout_mode = 0
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 46
-text = " Back "
-
-[node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back"]
-script = ExtResource("6_o6xl0")
-animation_name = "options_to_start"
-metadata/_custom_type_script = "uid://b3tnj82s4tfu"
-
-[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back/AnimatorElement" node_paths=PackedStringArray("node")]
-script = ExtResource("6_85g3d")
-node = NodePath("../../../../../../../AnimationPlayer")
-metadata/_custom_type_script = "uid://vflwvin64hae"
-
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack"]
 layout_mode = 2
 size_flags_vertical = 0
@@ -744,110 +791,118 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 11
 
-[node name="Music Control" type="HBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+[node name="Master" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Master Volume: 0"
 vertical_alignment = 1
 script = ExtResource("8_ya4ey")
 text_format = "Master Volume: {0}"
 
-[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control/Label" node_paths=PackedStringArray("input")]
+[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Master" node_paths=PackedStringArray("input")]
 script = ExtResource("9_eb6dy")
 input = NodePath("DynamicSingleNodeValue")
 property = "value"
 metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
 
-[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control/Label/DynamicPropertyValue" node_paths=PackedStringArray("node")]
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Master/DynamicPropertyValue" node_paths=PackedStringArray("node")]
 script = ExtResource("6_85g3d")
-node = NodePath("../../../HSlider")
+node = NodePath("../../../MasVol")
 metadata/_custom_type_script = "uid://vflwvin64hae"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control"]
+[node name="MasVol" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 30.0
+max_value = 5.0
 step = 0.1
-value = 5.0
+value = 1.0
 
-[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control/HSlider"]
+[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/MasVol"]
 script = ExtResource("10_ya4ey")
 bus_name = "Master"
 
-[node name="Music Control2" type="HBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+[node name="Music" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Music Volume: 0"
 vertical_alignment = 1
 script = ExtResource("8_ya4ey")
 text_format = "Music Volume: {0}"
 
-[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2/Label" node_paths=PackedStringArray("input")]
+[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music" node_paths=PackedStringArray("input")]
 script = ExtResource("9_eb6dy")
 input = NodePath("DynamicSingleNodeValue")
 property = "value"
 metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
 
-[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2/Label/DynamicPropertyValue" node_paths=PackedStringArray("node")]
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music/DynamicPropertyValue" node_paths=PackedStringArray("node")]
 script = ExtResource("6_85g3d")
-node = NodePath("../../../HSlider")
+node = NodePath("../../../MusVol")
 metadata/_custom_type_script = "uid://vflwvin64hae"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2"]
+[node name="MusVol" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 30.0
+max_value = 5.0
 step = 0.1
-value = 5.0
+value = 1.0
 
-[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Music Control2/HSlider"]
+[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/MusVol"]
 script = ExtResource("10_ya4ey")
 bus_name = "Music"
 
-[node name="SFX Control" type="HBoxContainer" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Sound Effect Volume: 0"
 vertical_alignment = 1
 script = ExtResource("8_ya4ey")
 text_format = "Sound Effect Volume: {0}"
 
-[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control/Label" node_paths=PackedStringArray("input")]
+[node name="DynamicPropertyValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Label3" node_paths=PackedStringArray("input")]
 script = ExtResource("9_eb6dy")
 input = NodePath("DynamicSingleNodeValue")
 property = "value"
 metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
 
-[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control/Label/DynamicPropertyValue" node_paths=PackedStringArray("node")]
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Label3/DynamicPropertyValue" node_paths=PackedStringArray("node")]
 script = ExtResource("6_85g3d")
-node = NodePath("../../../HSlider")
+node = NodePath("../../../SFXSlider")
 metadata/_custom_type_script = "uid://vflwvin64hae"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control"]
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 30.0
+max_value = 5.0
 step = 0.1
-value = 5.0
+value = 1.0
 
-[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFX Control/HSlider"]
+[node name="SetVolume" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFXSlider"]
 script = ExtResource("10_ya4ey")
 bus_name = "SFX"
+
+[node name="Back" type="Button" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 41
+text = " Back "
+
+[node name="AnimatorElement" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Back"]
+script = ExtResource("6_o6xl0")
+animation_name = "options_to_start"
+metadata/_custom_type_script = "uid://b3tnj82s4tfu"
+
+[node name="DynamicSingleNodeValue" type="Node" parent="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Back/AnimatorElement" node_paths=PackedStringArray("node")]
+script = ExtResource("6_85g3d")
+node = NodePath("../../../../../../../../AnimationPlayer")
+metadata/_custom_type_script = "uid://vflwvin64hae"
 
 [node name="LeftCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 0
@@ -857,7 +912,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 focus_behavior_recursive = 1
-texture = SubResource("GradientTexture2D_tefeu")
+texture = ExtResource("13_gqmmt")
 
 [node name="RightCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
 layout_mode = 0
@@ -866,7 +921,8 @@ offset_right = 1728.0022
 offset_bottom = 648.0
 size_flags_horizontal = 3
 focus_behavior_recursive = 1
-texture = SubResource("GradientTexture2D_tefeu")
+texture = ExtResource("13_gqmmt")
+flip_h = true
 
 [node name="InputLock" type="Control" parent="CanvasLayer/UI"]
 visible = false
@@ -933,13 +989,38 @@ target_value = "Scene"
 new_value = NodePath("../DynamicCastScenesValue")
 metadata/_custom_type_script = "uid://cwf1a324oi18n"
 
+[node name="ButtonUp" type="Node" parent="CanvasLayer/UI"]
+script = ExtResource("21_og1vs")
+sfx = ExtResource("22_2wyq8")
+metadata/_custom_type_script = "uid://dct20wi0v1ct4"
+
+[node name="ButtonDown" type="Node" parent="CanvasLayer/UI"]
+script = ExtResource("21_og1vs")
+sfx = ExtResource("23_vxglm")
+metadata/_custom_type_script = "uid://dct20wi0v1ct4"
+
 [node name="SFX_Manager" type="Node" parent="."]
 script = ExtResource("9_ya4ey")
 metadata/_custom_type_script = "uid://cv207a4o6oygf"
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_jscy8")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[connection signal="button_down" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start" to="CanvasLayer/UI/ButtonDown" method="make"]
+[connection signal="button_up" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start" to="CanvasLayer/UI/ButtonUp" method="make"]
 [connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Start/AnimatorElement" method="animate"]
+[connection signal="button_down" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options" to="CanvasLayer/UI/ButtonDown" method="make"]
+[connection signal="button_up" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options" to="CanvasLayer/UI/ButtonUp" method="make"]
 [connection signal="pressed" from="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options" to="CanvasLayer/UI/StartScreen/MarginContainer/HBoxContainer/MenuStack/Options/AnimatorElement" method="animate"]
-[connection signal="pressed" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back" to="CanvasLayer/UI/Options/MarginContainer/MenuStack/HBoxContainer/Back/AnimatorElement" method="animate"]
+[connection signal="value_changed" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/MasVol" to="CanvasLayer/UI/ButtonUp" method="make_value"]
+[connection signal="value_changed" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/MusVol" to="CanvasLayer/UI/ButtonUp" method="make_value"]
+[connection signal="value_changed" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/SFXSlider" to="CanvasLayer/UI/ButtonUp" method="make_value"]
+[connection signal="button_down" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Back" to="CanvasLayer/UI/ButtonDown" method="make"]
+[connection signal="button_up" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Back" to="CanvasLayer/UI/ButtonUp" method="make"]
+[connection signal="pressed" from="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Back" to="CanvasLayer/UI/Options/MarginContainer/MenuStack/ScrollContainer/VBoxContainer/Back/AnimatorElement" method="animate"]
 [connection signal="finished" from="CanvasLayer/UI/AnimationPlayer/OnCloseCurtain" to="CanvasLayer/UI/AnimationPlayer/OnCloseCurtain/OpenCurtain" method="animate"]
 [connection signal="finished" from="CanvasLayer/UI/AnimationPlayer/OnCloseCurtain" to="CanvasLayer/UI/AnimationPlayer/OnCloseCurtain/DeleteLevel" method="delete"]
 [connection signal="finished" from="CanvasLayer/UI/AnimationPlayer/OnCloseCurtain/DeleteLevel" to="CanvasLayer/UI/AnimationPlayer/OnCloseCurtain/AddComponent" method="add"]
