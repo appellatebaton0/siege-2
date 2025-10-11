@@ -44,7 +44,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 61
+theme_override_font_sizes/font_size = 41
 text = "Level 1"
 
 [node name="DeleteOtherLevels" type="Node" parent="MarginContainer/Button"]

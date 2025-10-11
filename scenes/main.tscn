@@ -1,11 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://chm3si0nicqxd"]
+[gd_scene load_steps=43 format=3 uid="uid://chm3si0nicqxd"]
 
 [ext_resource type="Theme" uid="uid://dtad3en8c1ip6" path="res://assets/resources/theme.tres" id="1_tipki"]
 [ext_resource type="Texture2D" uid="uid://dlgem7aqvi2y1" path="res://assets/textures/start_screen.png" id="2_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://xirfpyakqw3v" path="res://assets/textures/button.png" id="3_0ld40"]
 [ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="6_85g3d"]
 [ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="6_o6xl0"]
-[ext_resource type="Script" uid="uid://kcbr0rkf2ua7" path="res://scripts/components/elements/em_autocolumn.gd" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bscyugcsicsg5" path="res://scenes/elements/level_button.tscn" id="6_tipki"]
 [ext_resource type="Script" uid="uid://cwf1a324oi18n" path="res://scripts/components/cp_modifyargument.gd" id="6_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://w7qsb003cduh" path="res://assets/textures/screen.png" id="6_yc10j"]
@@ -698,16 +697,12 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-
-[node name="AutoColumnElement" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer"]
-script = ExtResource("6_tefeu")
-metadata/_custom_type_script = "uid://kcbr0rkf2ua7"
+columns = 4
 
 [node name="DirectoryLoadComponent" type="Node" parent="CanvasLayer/UI/LevelSelect/MarginContainer/MenuStack/GridContainer" node_paths=PackedStringArray("pass_file_modifiers", "pass_index_modifiers")]
 script = ExtResource("7_o6xl0")
 pass_file_modifiers = [NodePath("PassScene")]
 pass_index_modifiers = [NodePath("PassIndex")]
-load_from_back = true
 loading_scene = ExtResource("6_tipki")
 directory_path = "res://scenes/levels"
 metadata/_custom_type_script = "uid://bgf1fdkr0aotd"
@@ -905,6 +900,7 @@ node = NodePath("../../../../../../../../AnimationPlayer")
 metadata/_custom_type_script = "uid://vflwvin64hae"
 
 [node name="LeftCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
+texture_filter = 1
 layout_mode = 0
 offset_left = -576.0
 offset_bottom = 648.0
@@ -915,6 +911,7 @@ focus_behavior_recursive = 1
 texture = ExtResource("13_gqmmt")
 
 [node name="RightCurtain2" type="TextureRect" parent="CanvasLayer/UI"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 1152.0
 offset_right = 1728.0022

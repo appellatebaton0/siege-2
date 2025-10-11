@@ -13,7 +13,7 @@ config_version=5
 config/name="siege-2"
 run/main_scene="uid://chm3si0nicqxd"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dodphawatnmqk"
 
 [autoload]
 
@@ -90,7 +90,7 @@ Reset={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Logic"
 2d_physics/layer_4="Object"
-2d_physics/layer_5="Death"
+2d_physics/layer_5="ObjectStop"
 2d_physics/layer_6="Target"
 2d_physics/layer_7="Goal"
 

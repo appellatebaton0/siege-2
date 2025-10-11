@@ -1,7 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://kq0ounbc4jwp"]
+[gd_scene load_steps=53 format=3 uid="uid://kq0ounbc4jwp"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_h5w3c"]
 [ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="2_0878f"]
+[ext_resource type="PackedScene" uid="uid://g1ehoqi5qweg" path="res://scenes/components/cp_static.tscn" id="2_bwi5y"]
 [ext_resource type="Texture2D" uid="uid://c58ovue33sa13" path="res://assets/resources/player_texture.tres" id="3_7860b"]
 [ext_resource type="Script" uid="uid://emk4mohj4ubh" path="res://scripts/components/motion_subcomponents/motion_states/cms_platformer.gd" id="3_dferu"]
 [ext_resource type="Script" uid="uid://c3lp8v776obwx" path="res://scripts/dynamic_values/condition/dc_cast.gd" id="4_6a6mx"]
@@ -20,15 +21,21 @@
 [ext_resource type="Script" uid="uid://cwf1a324oi18n" path="res://scripts/components/cp_modifyargument.gd" id="14_uqfkb"]
 [ext_resource type="Script" uid="uid://bc760wnktbcy7" path="res://scripts/dynamic_values/int/di_cast.gd" id="15_afsss"]
 [ext_resource type="Script" uid="uid://wx8iqc6tttrj" path="res://scripts/dynamic_values/int/di_modify.gd" id="16_642so"]
-[ext_resource type="Texture2D" uid="uid://bwr6ihyg6u6nm" path="res://assets/textures/Sprite-0014.png" id="20_3hvrq"]
+[ext_resource type="Texture2D" uid="uid://bwr6ihyg6u6nm" path="res://assets/textures/player.png" id="20_3hvrq"]
 [ext_resource type="Texture2D" uid="uid://b6ikgjn1ygpcj" path="res://assets/textures/wand.png" id="20_afsss"]
 [ext_resource type="Script" uid="uid://b3tnj82s4tfu" path="res://scripts/components/elements/em_animator.gd" id="21_6a6mx"]
 [ext_resource type="Script" uid="uid://bibj6mktsnd8n" path="res://scripts/dynamic_values/condition/dc_not.gd" id="22_bwi5y"]
 [ext_resource type="Script" uid="uid://bsd2u0vt62p7p" path="res://scripts/dynamic_values/float/df_vector.gd" id="24_18oyn"]
 [ext_resource type="Script" uid="uid://dc01byv28y07a" path="res://scripts/dynamic_values/vec2/dv2_cast.gd" id="25_f6erl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18oyn"]
+size = Vector2(26, 1.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
 size = Vector2(26, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hvrq"]
+size = Vector2(38, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7i36"]
 atlas = ExtResource("20_3hvrq")
@@ -208,9 +215,16 @@ spawn_arguments = Dictionary[String, Variant]({
 })
 metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
+[node name="CP_Static" parent="." instance=ExtResource("2_bwi5y")]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Static"]
+position = Vector2(0, -14.54)
+shape = SubResource("RectangleShape2D_18oyn")
+
 [node name="Motion" parent="." instance=ExtResource("2_0878f")]
 collision_layer = 2
-collision_mask = 89
+collision_mask = 73
 
 [node name="Platformer" type="Node" parent="Motion" node_paths=PackedStringArray("switch_handles")]
 script = ExtResource("3_dferu")
@@ -276,7 +290,7 @@ dash_time = 0.5
 dash_cooldown = 3.0
 override_mask = true
 check_area = NodePath("../../PermCheck")
-check_mask = 1
+check_mask = 9
 
 [node name="DecrementRemainining" type="Node" parent="Motion/Permeate" node_paths=PackedStringArray("new_value", "target")]
 script = ExtResource("14_uqfkb")
@@ -306,10 +320,11 @@ shape = SubResource("RectangleShape2D_tefeu")
 
 [node name="PermCheck" parent="." instance=ExtResource("4_dferu")]
 collision_layer = 2
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PermCheck"]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_tefeu")
+shape = SubResource("RectangleShape2D_3hvrq")
 
 [node name="Wand" type="Node2D" parent="."]
 script = ExtResource("6_xx81n")

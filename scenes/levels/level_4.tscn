@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://bxjg885lu0c7y" path="res://scripts/components/elements/em_label.gd" id="3_0n65g"]
 [ext_resource type="Script" uid="uid://dxsyhe8y4y56p" path="res://scripts/dynamic_values/dv_spawnargument.gd" id="4_uyomx"]
 [ext_resource type="Script" uid="uid://vflwvin64hae" path="res://scripts/dynamic_values/node/dn_node.gd" id="5_io455"]
-[ext_resource type="Script" uid="uid://baaddbg8rgq1l" path="res://scripts/components/cp_modifyproperty.gd" id="6_suy3i"]
+[ext_resource type="Script" path="res://scripts/components/cp_modifyproperty.gd" id="6_suy3i"]
 [ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="7_8hw10"]
 [ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="8_1s8bw"]
-[ext_resource type="Script" uid="uid://vwqwacuucle4" path="res://scripts/dynamic_values/condition/dc_manual.gd" id="9_seltb"]
+[ext_resource type="Script" path="res://scripts/dynamic_values/condition/dc_manual.gd" id="9_seltb"]
 [ext_resource type="Texture2D" uid="uid://flr2b4nnodqg" path="res://assets/textures/background.png" id="10_dorgx"]
 [ext_resource type="PackedScene" uid="uid://dbpr33vcwj6ec" path="res://scenes/actors/camera.tscn" id="11_y0jd0"]
 [ext_resource type="PackedScene" uid="uid://kq0ounbc4jwp" path="res://scenes/actors/player.tscn" id="12_4luak"]
@@ -162,7 +162,7 @@ animations = [{
 "speed": 11.0
 }]
 
-[node name="Level1" type="Node2D" groups=["Level"]]
+[node name="Level4" type="Node2D" groups=["Level"]]
 script = ExtResource("1_r3huh")
 spawn_arguments = Dictionary[String, Variant]({
 "LeviateLimit": 0,

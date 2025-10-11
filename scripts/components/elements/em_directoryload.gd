@@ -34,13 +34,13 @@ func _ready() -> void:
 		if child is ModArgumentComponent:
 			modifiers.append(child)
 	
+	var file_paths:Array[String]
 	
 	## Access the directory and iterate through its files
 	var dir:DirAccess = DirAccess.open(directory_path)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
-		var file_index := 0
 		while file_name != "": # While there are files left
 			# As long as it isn't a directory
 			if !dir.current_is_dir(): 
@@ -48,30 +48,38 @@ func _ready() -> void:
 				file_name = file_name.replace(".remap", "")
 				file_name = file_name.replace(".import", "")
 				
-				var new
-				if load_from_directory: ## Load the file itself
-					new = load(directory_path + "/" + file_name)
-				else: ## Load a file for each file
-					new = loading_scene.instantiate()
-					
-				for mod in modifiers:
-					if pass_file_modifiers.has(mod):
-						mod.modify(new, "", load(directory_path + "/" + file_name))
-					elif pass_index_modifiers.has(mod):
-						mod.modify(new, "", file_index)
-					else:
-						mod.modify(new)
+				file_paths.append(directory_path + "/" + file_name)
 				
-				to_be_parented.append(new)
-				
-			file_index += 1
 			file_name = dir.get_next() # Move on
 	else: # IF something messed up.
 		print("An error occurred when trying to access the path.")
+	
+	
+	file_paths.sort()
+	if load_from_back:
+		file_paths.reverse()
+	
+	for i in range(len(file_paths)):
+		var new
+		if load_from_directory: ## Load the file itself
+			new = load(file_paths[i])
+		else: ## Load a file for each file
+			new = loading_scene.instantiate()
+			
+		for mod in modifiers:
+			if pass_file_modifiers.has(mod):
+				mod.modify(new, "", load(file_paths[i]))
+			elif pass_index_modifiers.has(mod):
+				mod.modify(new, "", i)
+			else:
+				mod.modify(new)
+	
+		to_be_parented.append(new)
+
 
 func _process(_delta: float) -> void:
 	while len(to_be_parented) > 0:
-		var node = to_be_parented[0 if load_from_back else len(to_be_parented)-1]
+		var node = to_be_parented[0]
 		
 		if node.get_parent() == null:
 			parent.add_child(node)

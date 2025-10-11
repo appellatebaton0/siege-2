@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bojjtdhxf5wgq"]
+[gd_scene load_steps=25 format=3 uid="uid://bojjtdhxf5wgq"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_eq1s3"]
 [ext_resource type="Script" uid="uid://bmkaebvgxxmqf" path="res://scripts/components/cp_rigid.gd" id="2_rc1uf"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://wx8iqc6tttrj" path="res://scripts/dynamic_values/int/di_modify.gd" id="15_hjkl1"]
 [ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="16_co3tg"]
 [ext_resource type="Texture2D" uid="uid://bnd0ar7ib8n6o" path="res://assets/textures/object1.png" id="17_rc1uf"]
+[ext_resource type="Script" uid="uid://evy7o4o3vm6m" path="res://scripts/components/cp_animatedsprite.gd" id="18_78ljl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oc4kc"]
 bounce = 0.2
@@ -28,6 +29,10 @@ size = Vector2(32, 32)
 atlas = ExtResource("17_rc1uf")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxokt"]
+atlas = ExtResource("17_rc1uf")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_uxokt"]
 animations = [{
 "frames": [{
@@ -36,6 +41,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxokt")
+}],
+"loop": true,
+"name": &"leviated",
 "speed": 5.0
 }]
 
@@ -48,11 +61,12 @@ metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 8
-collision_mask = 75
+collision_mask = 89
 mass = 300.0
 physics_material_override = SubResource("PhysicsMaterial_oc4kc")
 lock_rotation = true
 script = ExtResource("2_rc1uf")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("RectangleShape2D_s8va5")
@@ -159,9 +173,14 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetChecker"]
 shape = SubResource("RectangleShape2D_s8va5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("condition_ties")]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uxokt")
+script = ExtResource("18_78ljl")
+condition_ties = {
+NodePath("../RigidBody2D/NoGravity"): "leviated",
+NodePath("../RigidBody2D/NoGravity/Gravity"): "default"
+}
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_rc1uf")

@@ -35,7 +35,7 @@ Instead of doing framework progress reports like last time, we're doing devlogs!
 - <img src="assets/screenshots/grayscale.png" width="400">
 - In other news, I finished up the following, making the game fully playable (still no levels D:)
     - You can complete a level by reaching the goal (which doesn't have art or in-game meaning yet...)
-    - You can reset levels with R
+    - You can reset levels with R.
 - --
 - Since then, I've started working on the art, since I want this to be *polished*.
 - <img src="assets/screenshots/ART0.png" width="400">
@@ -46,8 +46,16 @@ Instead of doing framework progress reports like last time, we're doing devlogs!
 - <img src="assets/screenshots/UI4.png" width="45%"><img src="assets/screenshots/ingame.png" width="45%">
 - I also added music - I didn't have time to make any of my own so I used [Curious Critters by Matthew Pablo](https://opengameart.org/content/curious-critters), from OpenGameArt.com
 - In other news, there are now in-game HUDs;
-    - for seeing how many times you can Permeate left -> see the above picture, with a cooldown bar
+    - for seeing how many times you can Permeate left -> see the above picture, with a cooldown bar.
     - for seeing how many objects you can Leviate at once. 
 - My plan for tomorrow, which will likely be my final day working on this, is to get more levels, as there are 4 right now and I haven't even introduced all the mechanics yet.
 - Now here's how the ToDo list's looking! I cut out everything but what I've planned.
 - <img src="assets/screenshots/TODO4.png" width="400">
+### Saturday -> Submission!
+- Not much to say, I fixed up some bugs, and got 4 more levels made.
+- Also changed how the player and walls interact, to allow for a cool (and hopefully intuitive) interaction in the final level.
+- Here's the final ToDo list,just for fun;
+- <img src="assets/screenshots/TODO5.png" width="400"> 
+- Overall, this was very fun, and definitely my best Siege week game (and one of my best games period).
+    - I especially enjoying going down the technical art rabbit hole for the grayscale effect.
+    - The framework I've been building for this is finally well-done enough that the actual construction went by pretty fast, allowing me to focus on polishing, and I think it shows!
