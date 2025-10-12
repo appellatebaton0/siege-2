@@ -7,7 +7,7 @@ Instead of doing framework progress reports like last time, we're doing devlogs!
 
 Here's a [demo video](assets/screenshots/demo.mp4), linked incase the html breaks TvT;
 
-<video src="assets/screenshots/demo.mp4" width="90%" controls></video>
+<video src="assets/screenshots/demo_vid.mp4" width="90%" controls></video>
 
 ## Devlogs (Mon. 10-6-25 to Sun. 10-12-25)
 ### Monday -> Planning
