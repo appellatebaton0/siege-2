@@ -5,7 +5,7 @@ A puzzle platforming game where you're a magician!
 
 Instead of doing framework progress reports like last time, we're doing devlogs!
 
-Here's a [demo video](assets/screenshots/demo.mp4), linked incase the html breaks TvT;
+Here's a [demo video](assets/screenshots/demo_vid.mp4), linked incase the html breaks TvT;
 
 <video src="assets/screenshots/demo_vid.mp4" width="90%" controls></video>
 
