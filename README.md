@@ -5,6 +5,9 @@ A puzzle platforming game where you're a magician!
 
 Instead of doing framework progress reports like last time, we're doing devlogs!
 
+Here's a demo video;
+
+<video src="assets/screenshots/demo.mp4" width="90%" controls></video>
 
 ## Devlogs (Mon. 10-6-25 to Sun. 10-12-25)
 ### Monday -> Planning
